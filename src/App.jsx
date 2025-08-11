@@ -1,5 +1,5 @@
 import React from 'react'
-import GameDashboard from './components/GameDashboard'
+import GameDashboard from './pages/GameDashboard'
 
 export default function App(){
   return (

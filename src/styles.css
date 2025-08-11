@@ -1,6 +1,0 @@
-@layer utilities {
-  .smooth { transition: all 220ms cubic-bezier(.2,.9,.2,1); }
-}
-
-/* small global tweaks */
-body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }

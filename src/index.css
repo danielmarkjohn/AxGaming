@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@layer base {
+  html { color-scheme: dark; }
+}
+
+@layer utilities {
+  .smooth { transition: all 220ms cubic-bezier(.2,.9,.2,1); }
+  .hud-glow { box-shadow: 0 6px 40px rgba(124,58,237,0.12), inset 0 -8px 30px rgba(0,0,0,0.45); }
+  .glass { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.35)); }
+}
+

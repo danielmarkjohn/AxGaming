@@ -1,22 +1,23 @@
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
+  plugins: [react()],
   server: {
-    host: '0.0.0.0', // Listen on all addresses including LAN
-    port: 3000,      // Custom port (default is 5173)
-    strictPort: true, // Exit if port is already in use
-    open: true,      // Auto-open browser on startup
-    cors: true,      // Enable CORS
+    host: '0.0.0.0',
+    port: 3000,
+    strictPort: true,
+    open: true,
+    cors: true,
     hmr: {
-      port: 24678    // Custom HMR port
+      port: 24678
     }
   },
   preview: {
     host: '0.0.0.0',
-    port: 8080,      // Custom preview port (default is 4173)
+    port: 8080,
     strictPort: true,
     open: true
   },
-  base: '/',         // Public base path
-  mode: 'development' // Can be overridden by CLI --mode
+  base: '/'
 })
