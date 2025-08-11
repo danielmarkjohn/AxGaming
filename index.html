@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CoD-style Game Dashboard</title>
+    <!-- Tailwind Play CDN for quick dev (no build step needed for styling in preview) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* small additions for 3D/retro HUD */
+      .card-3d { transform-style: preserve-3d; perspective: 1200px; }
+      .card-inner { transition: transform .35s cubic-bezier(.2,.9,.2,1); transform-origin: center; }
+      .card-3d:hover .card-inner { transform: rotateX(6deg) rotateY(-6deg) translateZ(6px) scale(1.02); }
+      .hud-glow { box-shadow: 0 6px 40px rgba(124,58,237,0.12), inset 0 -8px 30px rgba(0,0,0,0.45); }
+      .glass { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.35)); }
+    </style>
+  </head>
+  <body class="antialiased bg-gradient-to-b from-[#05060a] to-[#0b0d12] text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

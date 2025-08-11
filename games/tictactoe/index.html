@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Triad — Pro Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="title">Triad</div>
+      <div class="mode-controls">
+        <select id="mode">
+          <option value="pvp">Local 2-player</option>
+          <option value="cpu">Play vs CPU</option>
+        </select>
+        <select id="symbol">
+          <option value="x">You: X</option>
+          <option value="o">You: O</option>
+        </select>
+        <button id="btn-restart" title="Restart">Restart</button>
+      </div>
+    </header>
+
+    <main class="game-area">
+      <section class="board-wrap">
+        <div id="board" class="board" role="grid" aria-label="Tic Tac Toe board">
+          <!-- 9 cells created by JS -->
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <div class="panel status">
+          <div id="turn">Turn: <span id="turn-player">X</span></div>
+          <div id="message" class="message">Good luck.</div>
+        </div>
+
+        <div class="panel scoreboard">
+          <div class="row"><div>Player X</div><div id="score-x">0</div></div>
+          <div class="row"><div>Player O</div><div id="score-o">0</div></div>
+          <div class="row"><div>Ties</div><div id="score-tie">0</div></div>
+        </div>
+
+        <div class="panel controls">
+          <button id="btn-undo">Undo</button>
+          <button id="btn-theme">Switch Theme</button>
+        </div>
+
+        <footer class="credits">Made by Daniel — polished UI, minimax AI, responsive.</footer>
+      </aside>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

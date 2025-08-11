@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Serpent — Pro Snake Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="title">Serpent</div>
+      <div class="controls">
+        <button id="btn-restart" title="Restart">⟲</button>
+        <button id="btn-pause" title="Pause">⏸</button>
+        <button id="btn-sound" title="Toggle sound">🔊</button>
+      </div>
+    </header>
+
+    <main class="game-wrap">
+      <canvas id="game" width="720" height="480"></canvas>
+
+      <div class="hud">
+        <div class="scoreboard">
+          <div>Score</div>
+          <div id="score">0</div>
+        </div>
+        <div class="scoreboard">
+          <div>High</div>
+          <div id="highscore">0</div>
+        </div>
+        <div class="instructions">
+          <div>Arrows / WASD — Move</div>
+          <div>Space — Pause</div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div>Made with ❤️ — Smooth graphics, particles, mobile swipe support.</div>
+      <div class="credits">Shot by Daniel</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
