@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from 'react'
 
 const games = [
   { id: 'snake', title: 'Snake Game', path: '/games/snake/index.html', desc: 'Fast arcade snake — mobile-ready', img: 'https://source.unsplash.com/800x500/?neon,grid' },
-  { id: 'triad', title: 'Tic Tac Toe', path: '/games/triad/index.html', desc: 'Unbeatable AI & local 2-player', img: 'https://source.unsplash.com/800x500/?game-controller' },
-  { id: 'sudoku', title: 'Sudoku', path: '/games/sudoko/index.html', desc: 'Three difficulties — confetti!', img: 'https://source.unsplash.com/800x500/?cyberpunk,city' }
+  { id: 'triad', title: 'Tic Tac Toe', path: '/games/tictactoe/index.html', desc: 'Unbeatable AI & local 2-player', img: 'https://source.unsplash.com/800x500/?game-controller' },
+  { id: 'sudoku', title: 'Sudoku', path: '/games/sudoku/index.html', desc: 'Three difficulties — confetti!', img: 'https://source.unsplash.com/800x500/?cyberpunk,city' }
 ]
 
 export default function GameDashboard(){
