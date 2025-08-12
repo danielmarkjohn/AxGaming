@@ -96,7 +96,7 @@ export default function ToolsOverlay({ activeTool, iframeRef, onReload, onClose,
           ref={iframeRef}
           className="w-full h-full border-0"
           title={activeTool.title}
-          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
+          sandbox="allow-scripts allow-forms allow-popups allow-modals"
           loading="lazy"
         />
         
