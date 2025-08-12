@@ -3,14 +3,14 @@ export const TOOLS_CONFIG = [
   { 
     id: 'calculator', 
     title: 'Calculator', 
-    path: 'src/@modules/tools/calculator/index.html', 
+    path: '/@modules/tools/calculator/index.html', 
     desc: 'Advanced scientific calculator with history', 
     category: 'utility'
   },
   { 
     id: 'timer', 
     title: 'Timer', 
-    path: 'src/@modules/tools/timer/index.html', 
+    path: '/@modules/tools/timer/index.html', 
     desc: 'Countdown timer and stopwatch', 
     category: 'utility'
   },
@@ -19,7 +19,7 @@ export const TOOLS_CONFIG = [
   { 
     id: 'base64-encoder', 
     title: 'Base64 Encode/Decode', 
-    path: 'src/@modules/tools/base64-encoder/index.html', 
+    path: '/@modules/tools/base64-encoder/index.html', 
     desc: 'Encode and decode Base64 data safely', 
     category: 'encoder'
   },
@@ -28,28 +28,28 @@ export const TOOLS_CONFIG = [
   { 
     id: 'json-formatter', 
     title: 'JSON Formatter', 
-    path: 'src/@modules/tools/json-formatter/index.html', 
+    path: '/@modules/tools/json-formatter/index.html', 
     desc: 'Format and beautify JSON data', 
     category: 'formatter'
   },
   { 
     id: 'timestamp-converter', 
     title: 'Timestamp Converter', 
-    path: 'src/@modules/tools/timestamp-converter/index.html', 
+    path: '/@modules/tools/timestamp-converter/index.html', 
     desc: 'Convert Unix timestamps to readable dates', 
     category: 'formatter'
   },
   { 
     id: 'regex-tester', 
     title: 'Regex Tester', 
-    path: 'src/@modules/tools/regex-tester/index.html', 
+    path: '/@modules/tools/regex-tester/index.html', 
     desc: 'Test and debug regular expressions', 
     category: 'formatter'
   },
   { 
     id: 'css-units-converter', 
     title: 'CSS Units Converter', 
-    path: 'src/@modules/tools/css-units-converter/index.html', 
+    path: '/@modules/tools/css-units-converter/index.html', 
     desc: 'Convert between CSS units (px, rem, em, vw, etc.)', 
     category: 'formatter'
   },
@@ -58,28 +58,28 @@ export const TOOLS_CONFIG = [
   { 
     id: 'uuid-generator', 
     title: 'UUID Generator', 
-    path: 'src/@modules/tools/uuid-generator/index.html', 
+    path: '/@modules/tools/uuid-generator/index.html', 
     desc: 'Generate random unique identifiers', 
     category: 'generator'
   },
   { 
     id: 'jwt-parser', 
     title: 'JWT Parser', 
-    path: 'src/@modules/tools/jwt-parser/index.html', 
+    path: '/@modules/tools/jwt-parser/index.html', 
     desc: 'Decode and view JWT token contents', 
     category: 'formatter'
   },
   { 
     id: 'svg-viewer', 
     title: 'SVG Viewer', 
-    path: 'src/@modules/tools/svg-viewer/index.html', 
+    path: '/@modules/tools/svg-viewer/index.html', 
     desc: 'Preview and validate SVG code', 
     category: 'formatter'
   },
   { 
     id: 'lorem-ipsum-generator', 
     title: 'Lorem Ipsum Generator', 
-    path: 'src/@modules/tools/lorem-ipsum-generator/index.html', 
+    path: '/@modules/tools/lorem-ipsum-generator/index.html', 
     desc: 'Generate placeholder text', 
     category: 'generator'
   }

@@ -2,16 +2,12 @@ import React, { useState } from 'react'
 import { Settings, Search, X } from 'lucide-react'
 import SettingsModal from '../@components/SettingsModal'
 import { TOOLS_CONFIG } from '../@config/tools'
-import { GAMES_CONFIG } from '../@config/games'
 import { categories } from '../@config/coreConfig'
 import { HOMEPAGE_CONFIG } from '../@config/homepage'
 
 export default function HomePage({ onNavigate }) {
   const [showSettings, setShowSettings] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-
-  // Calculate total items dynamically
-  const totalItems = GAMES_CONFIG.length + TOOLS_CONFIG.length
 
   // Filter tools based on search query
   const filteredTools = searchQuery.length >= HOMEPAGE_CONFIG.SEARCH.MIN_CHARS 

@@ -7,9 +7,8 @@
 ![Vite](https://img.shields.io/badge/Vite-5.0.0-646CFF?style=for-the-badge&logo=vite)
 ![Tailwind](https://img.shields.io/badge/Tailwind-4.1.11-38B2AC?style=for-the-badge&logo=tailwind-css)
 
-*A Call of Duty inspired dashboard combining productivity tools and games in one sleek interface*
 
-[🚀 Live Demo](#) • [📖 Documentation](#features) • [🛠️ Installation](#installation) • [🎮 Games](#games) • [⚙️ Tools](#tools)
+[🚀 Live Demo](#) • [📖 Documentation](#features) • [🛠️ Installation](#installation) • [⚙️ Tools](#tools)
 
 </div>
 
@@ -23,12 +22,6 @@
 - **Real-time Search** — Find tools instantly with smart filtering
 - **Dark Theme** — Easy on the eyes with gradient backgrounds
 
-### 🎮 **Gaming Hub**
-- **Integrated Game Launcher** — Play games directly in the dashboard
-- **Overlay System** — Seamless game switching with iframe integration
-- **PostMessage API** — Games can communicate with the dashboard
-- **Mobile Controls** — Touch-friendly gaming experience
-
 ### 🛠️ **Productivity Tools**
 - **12+ Built-in Tools** — Everything from calculators to code formatters
 - **Category Organization** — Tools grouped by utility, formatters, generators
@@ -40,7 +33,7 @@
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 16+ 
+- Node.js 22+ 
 - npm or yarn
 
 ### Installation
@@ -59,31 +52,6 @@ npm run dev
 # Build for production
 npm run build
 ```
-
-### 🎮 Adding Games
-```bash
-# Add your game builds to public/games/
-mkdir -p public/games/your-game
-# Copy your game files (index.html, assets, etc.)
-```
-
----
-
-## 🎮 Games
-
-### 🐍 **Serpent — Pro Snake Game**
-- Smooth canvas rendering with particles
-- Wrap-around world mechanics
-- Mobile swipe + keyboard controls
-- High score persistence
-- Golden fruit bonuses
-
-### ⭕ **Triad — Pro Tic Tac Toe**
-- Unbeatable AI using minimax algorithm
-- Local 2-player mode
-- Undo/redo functionality
-- Score tracking with localStorage
-- Responsive design with themes
 
 ---
 
@@ -114,16 +82,13 @@ mkdir -p public/games/your-game
 src/
 ├── @components/          # Reusable UI components
 ├── @config/             # Configuration files
-│   ├── games.js         # Game definitions
 │   ├── tools.js         # Tool definitions
 │   ├── homepage.js      # Homepage settings
 │   └── coreConfig.js    # Core app configuration
 ├── @modules/            # Game and tool modules
-│   ├── games/           # Game implementations
 │   └── tools/           # Tool implementations
 ├── pages/               # Main page components
 │   ├── HomePage.jsx     # Landing page
-│   ├── GameDashboard.jsx # Game launcher
 │   └── ToolsDashboard.jsx # Tools launcher
 └── App.jsx              # Main app component
 ```
