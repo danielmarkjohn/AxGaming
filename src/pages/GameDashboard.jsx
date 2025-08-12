@@ -1,14 +1,16 @@
 import React from 'react'
 import { useState, useRef, useEffect } from 'react'
+import { ArrowLeft } from 'lucide-react'
 import Sidebar from '../@components/Sidebar'
 import HeaderBar from '../@components/HeaderBar'
-import GameGrid from '../@components/GameGrid'
-import GameOverlay from '../@components/GameOverlay'
+import GameGrid from '../@components/GamesComponents/GameGrid'
+import GameOverlay from '../@components/GamesComponents//GameOverlay'
 import { GAMES_CONFIG, DASHBOARD_CONFIG } from '../@config/games'
 
-export default function GameDashboard(){
+export default function GameDashboard({ onBack }){
   const [activeGame, setActiveGame] = useState(null)
   const [overlayOpen, setOverlayOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const iframeRef = useRef(null)
 
   useEffect(()=>{
@@ -23,6 +25,7 @@ export default function GameDashboard(){
   function launch(game){
     setActiveGame(game)
     setOverlayOpen(true)
+    setSidebarOpen(false) // Close sidebar on mobile when launching
     setTimeout(()=>{
       if(iframeRef.current) iframeRef.current.src = game.path + '?rand=' + Date.now()
     }, DASHBOARD_CONFIG.IFRAME_LOAD_DELAY)
@@ -51,21 +54,47 @@ export default function GameDashboard(){
   }, [overlayOpen]);
 
   return (
-    <div className="max-w-7xl mx-auto grid grid-cols-12 gap-6">
-      <Sidebar games={GAMES_CONFIG} onLaunch={launch} />
+    <div className="min-h-screen p-3 sm:p-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Mobile/Tablet Layout */}
+        <div className="lg:hidden">
+          <HeaderBar
+            activeGame={activeGame}
+            onToggleOverlay={()=> activeGame ? setOverlayOpen(v=>!v) : null}
+            onBack={onBack}
+            onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+            sidebarOpen={sidebarOpen}
+          />
 
-      <main className="col-span-9 p-6 bg-[linear-gradient(180deg,#07070a,transparent)] rounded-2xl border border-white/5 shadow-xl">
-        <HeaderBar
-          activeGame={activeGame}
-          onToggleOverlay={()=> activeGame ? setOverlayOpen(v=>!v) : null}
-        />
+          <main className="mt-4 p-4 sm:p-6 bg-[linear-gradient(180deg,#07070a,transparent)] rounded-2xl border border-white/5 shadow-xl">
+            <GameGrid
+              games={GAMES_CONFIG}
+              onStart={launch}
+              onNewGame={(g)=>{ setActiveGame(g); reloadGame(g); setOverlayOpen(true) }}
+              onOpen={(g)=> window.open(g.path, '_blank')}
+              mobile={true}
+            />
+          </main>
+        </div>
 
-        <GameGrid
-          games={GAMES_CONFIG}
-          onStart={launch}
-          onNewGame={(g)=>{ setActiveGame(g); reloadGame(g); setOverlayOpen(true) }}
-          onOpen={(g)=> window.open(g.path, '_blank')}
-        />
+        {/* Desktop Layout */}
+        <div className="hidden lg:grid lg:grid-cols-12 lg:gap-6">
+
+          <main className="col-span-9 p-6 bg-[linear-gradient(180deg,#07070a,transparent)] rounded-2xl border border-white/5 shadow-xl">
+            <HeaderBar
+              activeGame={activeGame}
+              onToggleOverlay={()=> activeGame ? setOverlayOpen(v=>!v) : null}
+              onBack={onBack}
+            />
+
+            <GameGrid
+              games={GAMES_CONFIG}
+              onStart={launch}
+              onNewGame={(g)=>{ setActiveGame(g); reloadGame(g); setOverlayOpen(true) }}
+              onOpen={(g)=> window.open(g.path, '_blank')}
+            />
+          </main>
+        </div>
 
         {overlayOpen && activeGame && (
           <GameOverlay
@@ -75,7 +104,7 @@ export default function GameDashboard(){
             onClose={closeOverlay}
           />
         )}
-      </main>
+      </div>
     </div>
   )
 }

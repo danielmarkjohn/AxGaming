@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UUID Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <h1 class="title">UUID Generator</h1>
+      <div class="controls">
+        <button id="btn-theme" title="Toggle Theme">🎨</button>
+        <button id="btn-history" title="View History">📋</button>
+        <button id="btn-clear-history" title="Clear History">🗑️</button>
+      </div>
+    </div>
+
+    <div class="generator-section">
+      <div class="uuid-display">
+        <div class="uuid-output" id="uuid-output">
+          Click "Generate" to create a UUID
+        </div>
+        <div class="uuid-actions">
+          <button id="btn-generate" class="generate-btn">🎲 Generate UUID</button>
+          <button id="btn-copy" class="action-btn">📋 Copy</button>
+          <button id="btn-regenerate" class="action-btn">🔄 New</button>
+        </div>
+      </div>
+
+      <div class="options-panel">
+        <div class="option-group">
+          <label>UUID Version</label>
+          <select id="version-select">
+            <option value="4" selected>Version 4 (Random)</option>
+            <option value="1">Version 1 (Timestamp)</option>
+          </select>
+        </div>
+        
+        <div class="option-group">
+          <label>Format</label>
+          <select id="format-select">
+            <option value="standard" selected>Standard (with hyphens)</option>
+            <option value="compact">Compact (no hyphens)</option>
+            <option value="uppercase">Uppercase</option>
+            <option value="braces">With Braces {}</option>
+          </select>
+        </div>
+
+        <div class="option-group">
+          <label>Quantity</label>
+          <div class="quantity-controls">
+            <input type="number" id="quantity-input" min="1" max="1000" value="1">
+            <button id="btn-bulk-generate" class="action-btn">Generate Bulk</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <div class="info-card">
+        <h4>🔢 UUID v4 (Random)</h4>
+        <p>Randomly generated 128-bit identifier. Most commonly used format.</p>
+      </div>
+      <div class="info-card">
+        <h4>⏰ UUID v1 (Timestamp)</h4>
+        <p>Based on timestamp and MAC address. Guarantees uniqueness over time.</p>
+      </div>
+      <div class="info-card">
+        <h4>🔒 Cryptographically Secure</h4>
+        <p>Generated using secure random number generation for maximum entropy.</p>
+      </div>
+    </div>
+
+    <div id="notification" class="notification hidden">
+      <div class="notification-content">
+        <span id="notification-text">UUID copied to clipboard!</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

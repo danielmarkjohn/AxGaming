@@ -1,7 +1,7 @@
 import React from 'react'
 import { ArrowLeft, Menu, X } from 'lucide-react'
 
-export default function HeaderBar({ activeGame, onToggleOverlay, onBack, onToggleSidebar, sidebarOpen }){
+export default function ToolsHeaderBar({ activeTool, onToggleOverlay, onBack, onToggleSidebar, sidebarOpen }){
   return (
     <header className="flex items-center justify-between mb-4 lg:mb-6">
       <div className="flex items-center gap-2 sm:gap-4">
@@ -29,15 +29,15 @@ export default function HeaderBar({ activeGame, onToggleOverlay, onBack, onToggl
         )}
         
         <div>
-          <h2 className="text-lg sm:text-2xl font-extrabold tracking-wide">Games Center</h2>
-          <div className="text-xs sm:text-sm text-white/60 hidden sm:block">Launch & manage your games</div>
+          <h2 className="text-lg sm:text-2xl font-extrabold tracking-wide">Tools Center</h2>
+          <div className="text-xs sm:text-sm text-white/60 hidden sm:block">Launch & manage your tools</div>
         </div>
       </div>
       
       <div className="flex items-center gap-2 sm:gap-3">
         <button
-          onClick={()=> activeGame ? onToggleOverlay() : null}
-          disabled={!activeGame}
+          onClick={()=> activeTool ? onToggleOverlay() : null}
+          disabled={!activeTool}
           className="px-2 sm:px-3 py-1 sm:py-2 border rounded text-xs sm:text-sm border-white/5 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <span className="hidden sm:inline">Overlay</span>
@@ -45,7 +45,7 @@ export default function HeaderBar({ activeGame, onToggleOverlay, onBack, onToggl
         </button>
         <button
           className="px-2 sm:px-3 py-1 sm:py-2 bg-white/5 rounded text-xs sm:text-sm"
-          onClick={()=>{ if(activeGame) window.open(activeGame.path, '_blank')}}
+          onClick={()=>{ if(activeTool) window.open(activeTool.path, '_blank')}}
         >
           <span className="hidden sm:inline">Pop Out</span>
           <span className="sm:hidden">↗</span>
@@ -54,4 +54,3 @@ export default function HeaderBar({ activeGame, onToggleOverlay, onBack, onToggl
     </header>
   )
 }
-

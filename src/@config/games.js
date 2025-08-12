@@ -2,14 +2,14 @@ export const GAMES_CONFIG = [
   { 
     id: 'snake', 
     title: 'Snake Game', 
-    path: '/games/snake/index.html', 
+    path: 'src/@modules/games/snake/index.html', 
     desc: 'Fast arcade snake — mobile-ready', 
     img: '/assets/images/snake.jpg' 
   },
   { 
     id: 'triad', 
     title: 'Tic Tac Toe', 
-    path: '/games/tictactoe/index.html', 
+    path: 'src/@modules/games/tictactoe/index.html', 
     desc: 'Unbeatable AI & local 2-player', 
     img: '/assets/images/tictactoe.png' 
   }

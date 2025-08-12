@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timestamp to Date Converter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <h1 class="title">Timestamp to Date Converter</h1>
+      <div class="controls">
+        <button id="btn-theme" title="Toggle Theme">🎨</button>
+        <button id="btn-now" title="Current Timestamp">⏰</button>
+        <button id="btn-clear" title="Clear All">🗑️</button>
+      </div>
+    </div>
+
+    <div class="converter-section">
+      <!-- Timestamp to Date -->
+      <div class="converter-card">
+        <div class="card-header">
+          <h3>Timestamp to Date</h3>
+          <div class="format-selector">
+            <label>Format:</label>
+            <select id="timestamp-format">
+              <option value="seconds">Unix Seconds</option>
+              <option value="milliseconds">Unix Milliseconds</option>
+              <option value="microseconds">Unix Microseconds</option>
+              <option value="nanoseconds">Unix Nanoseconds</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <input 
+            type="text" 
+            id="timestamp-input" 
+            placeholder="Enter timestamp (e.g., 1640995200)"
+            spellcheck="false"
+          >
+          <button id="btn-convert-timestamp" class="convert-btn">Convert</button>
+        </div>
+        
+        <div class="results" id="timestamp-results">
+          <div class="result-item">
+            <span class="label">Local Time:</span>
+            <span id="local-time" class="value">-</span>
+          </div>
+          <div class="result-item">
+            <span class="label">UTC Time:</span>
+            <span id="utc-time" class="value">-</span>
+          </div>
+          <div class="result-item">
+            <span class="label">ISO 8601:</span>
+            <span id="iso-time" class="value">-</span>
+          </div>
+          <div class="result-item">
+            <span class="label">Relative:</span>
+            <span id="relative-time" class="value">-</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Date to Timestamp -->
+      <div class="converter-card">
+        <div class="card-header">
+          <h3>Date to Timestamp</h3>
+          <div class="format-selector">
+            <label>Output:</label>
+            <select id="output-format">
+              <option value="seconds">Unix Seconds</option>
+              <option value="milliseconds">Unix Milliseconds</option>
+              <option value="microseconds">Unix Microseconds</option>
+              <option value="nanoseconds">Unix Nanoseconds</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="date-inputs">
+          <div class="input-row">
+            <input type="datetime-local" id="datetime-input">
+            <button id="btn-convert-date" class="convert-btn">Convert</button>
+          </div>
+          <div class="input-row">
+            <input 
+              type="text" 
+              id="date-string-input" 
+              placeholder="Or enter date string (e.g., 2024-01-01 12:00:00)"
+            >
+            <button id="btn-convert-string" class="convert-btn">Parse</button>
+          </div>
+        </div>
+        
+        <div class="results" id="date-results">
+          <div class="result-item">
+            <span class="label">Unix Seconds:</span>
+            <span id="output-seconds" class="value">-</span>
+          </div>
+          <div class="result-item">
+            <span class="label">Unix Milliseconds:</span>
+            <span id="output-milliseconds" class="value">-</span>
+          </div>
+          <div class="result-item">
+            <span class="label">Unix Microseconds:</span>
+            <span id="output-microseconds" class="value">-</span>
+          </div>
+          <div class="result-item">
+            <span class="label">Unix Nanoseconds:</span>
+            <span id="output-nanoseconds" class="value">-</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Format Examples -->
+    <div class="examples-section">
+      <h3>Supported Date Formats</h3>
+      <div class="examples-grid">
+        <div class="example-group">
+          <h4>ISO 8601</h4>
+          <div class="example">2024-01-01T12:00:00Z</div>
+          <div class="example">2024-01-01T12:00:00.000Z</div>
+          <div class="example">2024-01-01T12:00:00+05:30</div>
+        </div>
+        <div class="example-group">
+          <h4>Common Formats</h4>
+          <div class="example">2024-01-01 12:00:00</div>
+          <div class="example">01/01/2024 12:00 PM</div>
+          <div class="example">January 1, 2024</div>
+        </div>
+        <div class="example-group">
+          <h4>Timestamps</h4>
+          <div class="example">1704110400 (seconds)</div>
+          <div class="example">1704110400000 (milliseconds)</div>
+          <div class="example">1704110400000000 (microseconds)</div>
+        </div>
+        <div class="example-group">
+          <h4>Relative</h4>
+          <div class="example">now</div>
+          <div class="example">today</div>
+          <div class="example">yesterday</div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="features">
+      <div class="feature">
+        <span class="feature-icon">⏰</span>
+        <span>Multiple timestamp formats</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🌍</span>
+        <span>Timezone support</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">📊</span>
+        <span>Batch processing</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">📋</span>
+        <span>Copy & export results</span>
+      </div>
+    </div>
+
+    <div id="notification" class="notification hidden">
+      <div class="notification-content">
+        <span id="notification-text">Conversion successful!</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JWT Parser</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <h1 class="title">JWT Parser</h1>
+      <div class="controls">
+        <button id="btn-theme" title="Toggle Theme">🎨</button>
+        <button id="btn-copy" title="Copy Decoded JWT">📋</button>
+        <button id="btn-clear" title="Clear All">🗑️</button>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="input-section">
+        <div class="section-header">
+          <h3>JWT Token</h3>
+          <div class="input-controls">
+            <button id="btn-paste" class="action-btn">Paste</button>
+            <button id="btn-parse" class="action-btn primary">Parse</button>
+          </div>
+        </div>
+        <textarea 
+          id="input-jwt" 
+          placeholder="Paste your JWT token here..."
+          spellcheck="false"
+        ></textarea>
+        <div class="input-info">
+          <span id="input-chars">0 characters</span>
+          <span id="token-status" class="status-ready">Ready to parse</span>
+        </div>
+      </div>
+
+      <div class="output-section">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="header">Header</button>
+          <button class="tab-btn" data-tab="payload">Payload</button>
+          <button class="tab-btn" data-tab="signature">Signature</button>
+        </div>
+
+        <div class="tab-content">
+          <div id="tab-header" class="tab-panel active">
+            <div class="section-header">
+              <h3>Header</h3>
+            </div>
+            <pre id="header-output" class="json-output"></pre>
+          </div>
+
+          <div id="tab-payload" class="tab-panel">
+            <div class="section-header">
+              <h3>Payload</h3>
+            </div>
+            <pre id="payload-output" class="json-output"></pre>
+          </div>
+
+          <div id="tab-signature" class="tab-panel">
+            <div class="section-header">
+              <h3>Signature</h3>
+            </div>
+            <div id="signature-output" class="signature-info">
+              <div class="signature-item">
+                <span class="label">Algorithm:</span>
+                <span id="signature-alg">-</span>
+              </div>
+              <div class="signature-item">
+                <span class="label">Signature:</span>
+                <span id="signature-value">-</span>
+              </div>
+              <div class="signature-item">
+                <span class="label">Verification:</span>
+                <span id="signature-verify" class="status-warning">Cannot verify without secret</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <span class="feature-icon">🔍</span>
+        <span>Decode JWT tokens</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">📋</span>
+        <span>View header & payload</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🔐</span>
+        <span>Signature analysis</span>
+      </div>
+    </div>
+
+    <div id="notification" class="notification hidden">
+      <div class="notification-content">
+        <span id="notification-text">JWT parsed successfully!</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

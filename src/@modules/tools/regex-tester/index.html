@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regex Tester</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <h1 class="title">Regex Tester</h1>
+      <div class="controls">
+        <button id="btn-theme" title="Toggle Theme">🎨</button>
+        <button id="btn-library" title="Pattern Library">📚</button>
+        <button id="btn-clear" title="Clear All">🗑️</button>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="regex-section">
+        <div class="section-header">
+          <h3>Regular Expression</h3>
+          <div class="regex-controls">
+            <button id="btn-validate" class="action-btn">✓ Validate</button>
+            <button id="btn-explain" class="action-btn">💡 Explain</button>
+            <button id="btn-copy-regex" class="action-btn">📋 Copy</button>
+          </div>
+        </div>
+        
+        <div class="regex-input-container">
+          <span class="regex-delimiter">/</span>
+          <input type="text" id="regex-input" placeholder="Enter your regex pattern..." value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+          <span class="regex-delimiter">/</span>
+          <input type="text" id="regex-flags" placeholder="flags" value="g" maxlength="6">
+        </div>
+
+        <div class="flags-section">
+          <label class="flag-label">
+            <input type="checkbox" id="flag-g" checked> <span>g</span> Global
+          </label>
+          <label class="flag-label">
+            <input type="checkbox" id="flag-i"> <span>i</span> Ignore case
+          </label>
+          <label class="flag-label">
+            <input type="checkbox" id="flag-m"> <span>m</span> Multiline
+          </label>
+          <label class="flag-label">
+            <input type="checkbox" id="flag-s"> <span>s</span> Dot all
+          </label>
+          <label class="flag-label">
+            <input type="checkbox" id="flag-u"> <span>u</span> Unicode
+          </label>
+          <label class="flag-label">
+            <input type="checkbox" id="flag-y"> <span>y</span> Sticky
+          </label>
+        </div>
+
+        <div class="regex-info">
+          <span id="regex-status" class="status-valid">Valid regex</span>
+          <span id="match-count">0 matches</span>
+        </div>
+      </div>
+
+      <div class="test-section">
+        <div class="section-header">
+          <h3>Test String</h3>
+          <div class="test-controls">
+            <button id="btn-test" class="action-btn primary">🔍 Test</button>
+            <button id="btn-replace" class="action-btn">🔄 Replace</button>
+            <button id="btn-copy-text" class="action-btn">📋 Copy</button>
+          </div>
+        </div>
+        
+        <textarea id="test-input" placeholder="Enter text to test against your regex...">john.doe@example.com
+jane_smith@test.org
+invalid-email@
+user@domain.co.uk
+admin@site.net</textarea>
+        
+        <div class="replace-section hidden">
+          <input type="text" id="replace-input" placeholder="Replacement text...">
+          <button id="btn-apply-replace" class="action-btn">Apply Replace</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-section">
+      <div class="matches-panel">
+        <div class="section-header">
+          <h3>Matches</h3>
+          <div class="match-controls">
+            <button id="btn-export-matches" class="action-btn">💾 Export</button>
+            <button id="btn-clear-matches" class="action-btn">🗑️ Clear</button>
+          </div>
+        </div>
+        <div id="matches-list" class="matches-list">
+          <div class="no-matches">No matches found</div>
+        </div>
+      </div>
+
+      <div class="groups-panel">
+        <div class="section-header">
+          <h3>Capture Groups</h3>
+        </div>
+        <div id="groups-list" class="groups-list">
+          <div class="no-groups">No capture groups</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="explanation-section hidden">
+      <div class="section-header">
+        <h3>Regex Explanation</h3>
+        <button id="btn-close-explanation" class="action-btn">✕ Close</button>
+      </div>
+      <div id="explanation-content" class="explanation-content"></div>
+    </div>
+
+    <div class="info-section">
+      <div class="info-card">
+        <h4>🔍 Pattern Testing</h4>
+        <p>Test regex patterns against sample text with real-time highlighting and match extraction.</p>
+      </div>
+      <div class="info-card">
+        <h4>📊 Match Analysis</h4>
+        <p>View detailed match information including capture groups and positions.</p>
+      </div>
+      <div class="info-card">
+        <h4>🔄 Find & Replace</h4>
+        <p>Test replacement patterns with backreferences and special sequences.</p>
+      </div>
+      <div class="info-card">
+        <h4>💡 Pattern Library</h4>
+        <p>Access common regex patterns for emails, URLs, phone numbers, and more.</p>
+      </div>
+    </div>
+
+    <div id="notification" class="notification hidden">
+      <div class="notification-content">
+        <span id="notification-text">Action completed!</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
