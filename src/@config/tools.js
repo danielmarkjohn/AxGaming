@@ -20,6 +20,7 @@ export const TOOLS_CONFIG = [
     id: 'base64-encoder', 
     title: 'Base64 Encode/Decode', 
     path: '/@modules/tools/base64-encoder/index.html', 
+    component: 'Base64Encoder',
     desc: 'Encode and decode Base64 data safely', 
     category: 'encoder'
   },

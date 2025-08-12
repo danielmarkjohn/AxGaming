@@ -1,42 +1,61 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import { X, RotateCcw, Maximize2, Minimize2 } from 'lucide-react'
+
+// Dynamic imports for tool components
+const toolComponents = {
+  'Base64Encoder': React.lazy(() => import('../../@modules/tools/base64-encoder/Base64Encoder'))
+}
 
 export default function ToolsOverlay({ activeTool, iframeRef, onReload, onClose, onToggle }) {
   const [isLoading, setIsLoading] = useState(true)
+  const [componentKey, setComponentKey] = useState(0)
+
+  // Check if tool has a React component
+  const hasComponent = activeTool?.component && toolComponents[activeTool.component]
+  const ToolComponent = hasComponent ? toolComponents[activeTool.component] : null
 
   useEffect(() => {
+    if (hasComponent) {
+      setIsLoading(false)
+      return
+    }
+
     setIsLoading(true)
-    
     const iframe = iframeRef.current
     if (!iframe) return
 
-    const handleLoad = () => {
-      setIsLoading(false)
-    }
-
-    const handleError = () => {
-      setIsLoading(false)
-    }
+    const handleLoad = () => setIsLoading(false)
+    const handleError = () => setIsLoading(false)
 
     iframe.addEventListener('load', handleLoad)
     iframe.addEventListener('error', handleError)
 
-    // Fallback timeout in case load event doesn't fire
-    const timeout = setTimeout(() => {
-      setIsLoading(false)
-    }, 3000)
+    const timeout = setTimeout(() => setIsLoading(false), 3000)
 
     return () => {
       iframe.removeEventListener('load', handleLoad)
       iframe.removeEventListener('error', handleError)
       clearTimeout(timeout)
     }
-  }, [activeTool, iframeRef])
+  }, [activeTool, iframeRef, hasComponent])
 
   // Reset loading when tool changes
   useEffect(() => {
-    setIsLoading(true)
-  }, [activeTool?.id])
+    if (hasComponent) {
+      setComponentKey(prev => prev + 1)
+    } else {
+      setIsLoading(true)
+    }
+  }, [activeTool?.id, hasComponent])
+
+  const handleReload = () => {
+    if (hasComponent) {
+      setComponentKey(prev => prev + 1)
+    } else {
+      setIsLoading(true)
+      onReload()
+    }
+  }
 
   return (
     <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex flex-col">
@@ -54,23 +73,22 @@ export default function ToolsOverlay({ activeTool, iframeRef, onReload, onClose,
 
         <div className="flex items-center gap-2">
           <button
-            onClick={() => {
-              setIsLoading(true)
-              onReload()
-            }}
+            onClick={handleReload}
             className="p-2 hover:bg-white/10 rounded-lg transition-colors"
             title="Reload Tool"
           >
             <RotateCcw className="w-4 h-4 text-white/70" />
           </button>
           
-          <button
-            onClick={() => window.open(activeTool.path, '_blank')}
-            className="p-2 hover:bg-white/10 rounded-lg transition-colors"
-            title="Open in New Tab"
-          >
-            <Maximize2 className="w-4 h-4 text-white/70" />
-          </button>
+          {!hasComponent && (
+            <button
+              onClick={() => window.open(activeTool.path, '_blank')}
+              className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+              title="Open in New Tab"
+            >
+              <Maximize2 className="w-4 h-4 text-white/70" />
+            </button>
+          )}
           
           <button
             onClick={onToggle}
@@ -92,24 +110,41 @@ export default function ToolsOverlay({ activeTool, iframeRef, onReload, onClose,
 
       {/* Tool Content */}
       <div className="flex-1 relative">
-        <iframe
-          ref={iframeRef}
-          className="w-full h-full border-0"
-          title={activeTool.title}
-          sandbox="allow-scripts allow-forms allow-popups allow-modals"
-          loading="lazy"
-        />
-        
-        {/* Loading indicator */}
-        {isLoading && (
-          <div className="absolute inset-0 bg-black/80 flex items-center justify-center z-10">
-            <div className="bg-black/90 px-6 py-4 rounded-xl border border-white/10">
-              <div className="flex items-center gap-3 text-white">
-                <div className="w-5 h-5 border-2 border-white/30 border-t-green-500 rounded-full animate-spin"></div>
-                <span className="text-sm font-medium">Loading {activeTool.title}...</span>
+        {hasComponent ? (
+          <Suspense fallback={
+            <div className="h-full bg-black/80 flex items-center justify-center">
+              <div className="bg-black/90 px-6 py-4 rounded-xl border border-white/10">
+                <div className="flex items-center gap-3 text-white">
+                  <div className="w-5 h-5 border-2 border-white/30 border-t-green-500 rounded-full animate-spin"></div>
+                  <span className="text-sm font-medium">Loading {activeTool.title}...</span>
+                </div>
               </div>
             </div>
-          </div>
+          }>
+            <ToolComponent key={componentKey} />
+          </Suspense>
+        ) : (
+          <>
+            <iframe
+              ref={iframeRef}
+              className="w-full h-full border-0"
+              title={activeTool.title}
+              sandbox="allow-scripts allow-forms allow-popups allow-modals"
+              loading="lazy"
+            />
+            
+            {/* Loading indicator for iframe */}
+            {isLoading && (
+              <div className="absolute inset-0 bg-black/80 flex items-center justify-center z-10">
+                <div className="bg-black/90 px-6 py-4 rounded-xl border border-white/10">
+                  <div className="flex items-center gap-3 text-white">
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-green-500 rounded-full animate-spin"></div>
+                    <span className="text-sm font-medium">Loading {activeTool.title}...</span>
+                  </div>
+                </div>
+              </div>
+            )}
+          </>
         )}
       </div>
 
