@@ -15,7 +15,7 @@ export const HOMEPAGE_CONFIG = {
   
   // UI Configuration
   UI: {
-    TITLE: 'ToolBox Pro',
+    TITLE: 'Axsphere Dev Utilities',
     GRID_BREAKPOINTS: {
       SM: 'md:grid-cols-2',
       LG: 'lg:grid-cols-3', 
