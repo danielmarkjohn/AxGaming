@@ -1,26 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import HomePage from './pages/HomePage'
-import ToolsDashboard from './pages/ToolsDashboard'
 
-export default function App(){
-  const [currentPage, setCurrentPage] = useState('home')
+import ToolPage from './pages/ToolPage'
 
-  const navigate = (page) => {
-    setCurrentPage(page)
+export default function App({ hash }){
+  // hash-based routing: #/ (home), #/tools/:id (tool)
+  const route = (hash || '#/').replace(/^#/, '')
+
+  if (route.startsWith('/tools/')) {
+    return <ToolPage />
   }
 
-  const renderPage = () => {
-    switch(currentPage) {
-      case 'tools':
-        return <ToolsDashboard onBack={() => navigate('home')} />
-      default:
-        return <HomePage onNavigate={navigate} />
-    }
-  }
-
+  // Home shows all tools and search; dashboard can still be reached if needed later
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#05060a] to-[#0b0d12]">
-      {renderPage()}
+    <div className="min-h-screen app-bg">
+      <HomePage onNavigate={() => { window.location.hash = '#/tools' }} />
     </div>
   )
 }

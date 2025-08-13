@@ -1,12 +1,53 @@
 @import "tailwindcss";
 
+/* Theme variables */
+:root {
+  --bg-start: #05060a;
+  --bg-end: #0b0d12;
+  --surface: rgba(255,255,255,0.04);
+  --surface-solid: #0d1117; /* GitHub dark-like solid */
+  --panel: linear-gradient(180deg, rgba(22,22,26,1), rgba(7,8,12,1));
+  --border: rgba(255,255,255,0.08);
+  --muted: rgba(255,255,255,0.55);
+  --text: #ffffff;
+  --accent: #7c3aed; /* default purple */
+  --accent-2: #22d3ee; /* cyan */
+}
+
+[data-theme='light'] {
+  --bg-start: #f8fafc;
+  --bg-end: #e2e8f0;
+  --surface: rgba(0,0,0,0.03);
+  --surface-solid: #ffffff;
+  --panel: linear-gradient(180deg, rgba(255,255,255,1), rgba(245,245,245,1));
+  --border: rgba(0,0,0,0.08);
+  --muted: rgba(0,0,0,0.60);
+  --text: #0f172a;
+}
+
+/* Accent helpers */
+.accent-blue { --accent:#60a5fa; --accent-2:#38bdf8; }
+.accent-purple { --accent:#a78bfa; --accent-2:#7c3aed; }
+.accent-green { --accent:#34d399; --accent-2:#10b981; }
+.accent-red { --accent:#f87171; --accent-2:#ef4444; }
+.accent-orange { --accent:#fb923c; --accent-2:#f59e0b; }
+
 @layer base {
   html { color-scheme: dark; }
+  body.app-bg {
+    background-image: linear-gradient(to bottom, var(--bg-start), var(--bg-end));
+    color: var(--text);
+  }
 }
 
 @layer utilities {
   .smooth { transition: all 220ms cubic-bezier(.2,.9,.2,1); }
   .hud-glow { box-shadow: 0 6px 40px rgba(124,58,237,0.12), inset 0 -8px 30px rgba(0,0,0,0.45); }
-  .glass { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.35)); }
+  .panel { background: var(--panel); }
+  .bg-surface { background-color: var(--surface-solid); }
+  .panel-border { border: 1px solid var(--border); }
+  .text-muted { color: var(--muted); }
+  .text-var { color: var(--text); }
+  .accent-gradient { background-image: linear-gradient(135deg, var(--accent), var(--accent-2)); }
 }
 
