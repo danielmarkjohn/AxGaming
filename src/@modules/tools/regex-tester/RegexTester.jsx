@@ -3,8 +3,7 @@ import React, { useMemo, useState } from 'react'
 export default function RegexTester() {
   const [pattern, setPattern] = useState('foo')
   const [flags, setFlags] = useState('g')
-  const [text, setText] = useState('foo bar\nFoo fighters\nfood
-')
+  const [text, setText] = useState('foo bar\nFoo fighters\nfood')
   const [error, setError] = useState('')
 
   const { regex, matches } = useMemo(() => {
@@ -31,6 +30,10 @@ export default function RegexTester() {
 
   const highlighted = useMemo(() => {
     if (!regex) return text
+    const escapeHtml = (s) =>
+      s.replace(/&/g, '&amp;')
+       .replace(/</g, '&lt;')
+       .replace(/>/g, '&gt;')
     try {
       const parts = []
       let last = 0
@@ -40,7 +43,6 @@ export default function RegexTester() {
         last = m.index + m.text.length
       })
       parts.push(text.slice(last))
-      // Convert tokens to spans
       let out = parts.join('')
       matches.forEach((m, i) => {
         const span = `<span class="bg-yellow-600/40 text-yellow-200 border border-yellow-500/40 rounded px-0.5">${escapeHtml(m.text)}</span>`
@@ -52,10 +54,7 @@ export default function RegexTester() {
     }
   }, [text, matches, regex])
 
-  const escapeHtml = (s) => s
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
+
 
   return (
     <div className="h-full p-6 text-white overflow-auto">
