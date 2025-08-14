@@ -1,8 +1,8 @@
-# ToolBox Pro — Ultimate Dashboard Experience
+# AxTools Pro — Ultimate Developer Toolkit
 
 <div align="center">
 
-![ToolBox Pro](https://img.shields.io/badge/ToolBox-Pro-blue?style=for-the-badge&logo=react)
+![AxTools Pro](https://img.shields.io/badge/AxTools-Pro-blue?style=for-the-badge&logo=react)
 ![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react)
 ![Vite](https://img.shields.io/badge/Vite-5.0.0-646CFF?style=for-the-badge&logo=vite)
 ![Tailwind](https://img.shields.io/badge/Tailwind-4.1.11-38B2AC?style=for-the-badge&logo=tailwind-css)
@@ -17,31 +17,33 @@
 ## ✨ Features
 
 ### 🎯 **Modern Dashboard Experience**
-- **Call of Duty Inspired UI** — Military-grade aesthetics with 3D card effects
-- **Responsive Design** — Perfect on desktop, tablet, and mobile
+- **Military-Grade UI** — Call of Duty inspired aesthetics with 3D card effects
+- **Responsive Design** — Perfect on desktop, tablet, and mobile devices
 - **Real-time Search** — Find tools instantly with smart filtering
 - **Dark Theme** — Easy on the eyes with gradient backgrounds
+- **Category Organization** — Tools grouped by Development, Multimedia, and Gaming
 
-### 🛠️ **Productivity Tools**
-- **12+ Built-in Tools** — Everything from calculators to code formatters
-- **Category Organization** — Tools grouped by utility, formatters, generators
-- **One-Click Launch** — Open tools in new tabs or embedded view
-- **Professional Grade** — Enterprise-ready utilities
+### 🛠️ **Professional Toolkit**
+- **60+ Built-in Tools** — Comprehensive collection for developers and creators
+- **Layer-based Image Editor** — Professional image editing with brushes, shapes, and layers
+- **Advanced Converters** — JSON, CSV, Base64, timestamps, and more
+- **Code Utilities** — Formatters, validators, generators, and analyzers
+- **Gaming Tools** — RPG generators, dice rollers, and character creators
 
 ---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 22+ 
+- Node.js 18+ 
 - npm or yarn
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/danielmarkjohn/toolbox-pro.git
-cd toolbox-pro
+git clone https://github.com/danielmarkjohn/axtools-pro.git
+cd axtools-pro
 
 # Install dependencies
 npm install
@@ -57,22 +59,60 @@ npm run build
 
 ## ⚙️ Tools
 
+### � **Development Tools**
+- **JSON Formatter** — Format, validate, and beautify JSON data
+- **Base64 Encoder/Decoder** — Encode and decode Base64 data safely
+- **JWT Parser & Builder** — Decode JWT tokens and build new ones with HS256/384/512
+- **Regex Tester** — Test and debug regular expressions with live matching
+- **CSS Units Converter** — Convert between px, rem, em, vw, vh, and more
+- **Timestamp Converter** — Unix timestamps to readable dates and vice versa
+- **UUID/ULID Generator** — Generate unique identifiers with various formats
+- **Hash Generator** — Generate SHA-256/384/512 hashes securely
+- **URL Encoder/Decoder** — Encode or decode URL strings properly
+- **HTML Escape/Unescape** — Convert text to HTML entities and back
+- **Text Case Converter** — camelCase, snake_case, kebab-case, PascalCase
+- **CSV ↔ JSON Converter** — Convert between CSV and JSON formats
+- **XML to JSON** — Convert XML to JSON using DOMParser
+- **Query Parameters to JSON** — Parse URL query strings to structured JSON
+- **HEX to RGB Converter** — Color conversion with CSS/Swift/Android snippets
+- **Number Base Converter** — Binary, octal, decimal, and hexadecimal conversion
+- **JSON ↔ YAML** — Convert between JSON and YAML formats
+- **SQL Minifier** — Remove comments and whitespace from SQL
+- **HAR File Viewer** — Analyze HTTP Archive files
+- **String Similarity** — Calculate Levenshtein distance and similarity
+- **Date Math Calculator** — Add/subtract time from dates
+- **Random Data Generator** — Generate sample names, emails, and UUIDs
+- **Byte Size Converter** — Convert between bytes, KB, MB, GB (SI/IEC)
+- **UTF8 Converter** — Convert UTF8 text to hex and binary
+- **ASCII Converter** — Convert ASCII characters to decimal values
+- **Text Reverser** — Reverse text character order
+- **Unicode Text Spoof** — Replace characters with Unicode look-alikes
+- **Zalgo Text Generator** — Generate chaotic text with combining characters
+- **Environment Converters** — .env to netlify.toml and other formats
+
+### 🎨 **Multimedia Tools**
+- **Modern Image Editor** — Professional editor with layers, brushes, shapes, and filters
+- **Image Resizer** — Resize images with aspect ratio control
+- **Image Format Converter** — Convert between PNG, JPEG, WebP formats
+- **Image to Base64** — Convert images to Base64 for embedding
+- **Color Picker & Analyzer** — Pick colors from images and get various format codes
+- **QR Code Generator** — Generate QR codes for text, URLs, and data
+- **ASCII Art Generator** — Convert text to ASCII art with various fonts
+- **CSS Gradient Generator** — Create beautiful CSS gradients with live preview
+- **Color Palette Generator** — Generate color palette shades from seed colors
+
+### � **Gaming Tools**
+- **Dice Roller** — Roll various dice combinations for tabletop games
+- **Fantasy Name Generator** — Generate character names for RPGs
+- **RPG Character Stats** — Roll character stats for D&D and other RPGs
+- **Loot Generator** — Generate random loot and treasure for RPG games
+- **Password Generator** — Generate secure passwords with custom rules
+
 ### 🔧 **Utility Tools**
 - **Calculator** — Advanced scientific calculator with history
 - **Timer** — Countdown timer and stopwatch functionality
-
-### 🔄 **Formatters & Validators**
-- **JSON Formatter** — Format and beautify JSON data
-- **Regex Tester** — Test and debug regular expressions
-- **CSS Units Converter** — Convert between px, rem, em, vw, etc.
-- **Timestamp Converter** — Unix timestamps to readable dates
-- **JWT Parser** — Decode and view JWT token contents
+- **Lorem Ipsum Generator** — Generate placeholder text in various lengths
 - **SVG Viewer** — Preview and validate SVG code
-
-### 🎲 **Generators**
-- **UUID Generator** — Generate random unique identifiers
-- **Lorem Ipsum Generator** — Generate placeholder text
-- **Base64 Encoder/Decoder** — Encode and decode Base64 data
 
 ---
 
@@ -82,15 +122,22 @@ npm run build
 src/
 ├── @components/          # Reusable UI components
 ├── @config/             # Configuration files
-│   ├── tools.js         # Tool definitions
-│   ├── homepage.js      # Homepage settings
-│   └── coreConfig.js    # Core app configuration
-├── @modules/            # Game and tool modules
-│   └── tools/           # Tool implementations
+│   ├── tools.js         # Tool definitions and categories
+│   ├── homepage.js      # Homepage settings and UI config
+│   └── coreConfig.js    # Core application configuration
+├── @modules/            # Tool modules and implementations
+│   └── tools/           # Individual tool components
+│       ├── json-formatter/
+│       ├── image-editor-modern/
+│       ├── base64-encoder/
+│       └── ...          # 60+ tool modules
 ├── pages/               # Main page components
-│   ├── HomePage.jsx     # Landing page
-│   └── ToolsDashboard.jsx # Tools launcher
-└── App.jsx              # Main app component
+│   ├── HomePage.jsx     # Landing page with tool grid
+│   ├── ToolPage.jsx     # Individual tool page wrapper
+│   └── ToolsDashboard.jsx # Tools launcher (legacy)
+├── router.jsx           # Lazy loading router for tools
+├── App.jsx              # Main application component
+└── main.jsx             # Application entry point
 ```
 
 ---
@@ -99,28 +146,38 @@ src/
 
 ### Adding New Tools
 
-1. **Create the tool module:**
+1. **Create the tool component:**
 ```bash
-mkdir src/@modules/tools/my-tool
-# Add index.html, style.css, script.js
+mkdir src/@modules/tools/my-awesome-tool
+# Create MyAwesomeTool.jsx component
 ```
 
-2. **Register in config:**
+2. **Register in tools config:**
 ```javascript
 // src/@config/tools.js
 {
-  id: 'my-tool',
+  id: 'my-awesome-tool',
   title: 'My Awesome Tool',
-  path: 'src/@modules/tools/my-tool/index.html',
-  desc: 'Description of what it does',
-  category: 'utility'
+  component: 'MyAwesomeTool',
+  desc: 'Description of what your tool does',
+  category: 'development' // or 'multimedia', 'gaming'
 }
 ```
 
-### Theming
-- Modify `tailwind.config.js` for color schemes
-- Update CSS custom properties in `src/index.css`
-- Configure gradients and effects in component files
+3. **Add to router:**
+```javascript
+// src/router.jsx
+const lazyTools = {
+  MyAwesomeTool: React.lazy(() => import('./@modules/tools/my-awesome-tool/MyAwesomeTool')),
+  // ... other tools
+}
+```
+
+### Theming & Styling
+- **Tailwind Configuration** — Modify `tailwind.config.js` for custom colors and effects
+- **CSS Variables** — Update custom properties in `src/index.css`
+- **Component Styling** — Use Tailwind classes with dark theme support
+- **3D Effects** — Customize card hover effects and animations
 
 ---
 
@@ -128,25 +185,36 @@ mkdir src/@modules/tools/my-tool
 
 ### Environment Variables
 ```bash
-# .env
-VITE_APP_TITLE="ToolBox Pro"
+# .env (optional)
+VITE_APP_TITLE="AxTools Pro"
 VITE_GITHUB_URL="https://github.com/danielmarkjohn"
 VITE_LINKEDIN_URL="https://linkedin.com/in/danielmarkjohn"
 ```
 
 ### Build Configuration
-- **Vite** — Lightning fast build tool
-- **PostCSS** — CSS processing with Tailwind
-- **ESBuild** — Fast JavaScript bundling
+- **Vite** — Lightning fast build tool with HMR
+- **PostCSS** — CSS processing with Tailwind CSS
+- **ESBuild** — Fast JavaScript bundling and JSX transformation
+- **React Router** — Hash-based routing for GitHub Pages compatibility
 
 ---
 
-## 📱 Mobile Support
+## 📱 Mobile & PWA Support
 
-- **Responsive Grid** — Adapts to all screen sizes
-- **Touch Controls** — Optimized for mobile gaming
-- **Swipe Navigation** — Intuitive mobile interactions
-- **PWA Ready** — Can be installed as a mobile app
+- **Responsive Grid** — Adapts to all screen sizes with breakpoint-specific layouts
+- **Touch Optimized** — All tools work perfectly on mobile devices
+- **PWA Ready** — Can be installed as a mobile app (add manifest.json)
+- **Offline Capable** — Most tools work without internet connection
+
+---
+
+## 🚀 Performance Features
+
+- **Lazy Loading** — Tools are loaded only when needed
+- **Code Splitting** — Automatic bundle splitting for optimal loading
+- **Tree Shaking** — Unused code is eliminated from bundles
+- **Modern JavaScript** — Uses latest ES features with Vite optimization
+- **Efficient Rendering** — React 18 with concurrent features
 
 ---
 
@@ -155,17 +223,25 @@ VITE_LINKEDIN_URL="https://linkedin.com/in/danielmarkjohn"
 We welcome contributions! Here's how to get started:
 
 1. **Fork the repository**
-2. **Create a feature branch:** `git checkout -b feature/amazing-feature`
-3. **Commit changes:** `git commit -m 'Add amazing feature'`
-4. **Push to branch:** `git push origin feature/amazing-feature`
+2. **Create a feature branch:** `git checkout -b feature/amazing-tool`
+3. **Commit changes:** `git commit -m 'Add amazing new tool'`
+4. **Push to branch:** `git push origin feature/amazing-tool`
 5. **Open a Pull Request**
 
 ### Development Guidelines
-- Follow React best practices
-- Use Tailwind for styling
-- Add proper TypeScript types
-- Include tests for new features
-- Update documentation
+- Follow React best practices and hooks patterns
+- Use Tailwind CSS for consistent styling
+- Implement proper error handling and loading states
+- Add tools to appropriate categories
+- Update documentation for new features
+- Test on multiple screen sizes and devices
+
+### Tool Development Standards
+- Each tool should be self-contained in its own directory
+- Use consistent UI patterns with panel styling
+- Implement copy-to-clipboard functionality where applicable
+- Add proper input validation and error messages
+- Include helpful examples and usage instructions
 
 ---
 
@@ -185,10 +261,27 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **Unsplash** — Beautiful images for game thumbnails
-- **Lucide React** — Clean and consistent icons
-- **Tailwind CSS** — Utility-first CSS framework
-- **Vite** — Next generation frontend tooling
+- **React Team** — For the amazing React framework
+- **Tailwind CSS** — For the utility-first CSS framework
+- **Vite** — For the next-generation frontend tooling
+- **Lucide React** — For the beautiful and consistent icon set
+- **Open Source Community** — For inspiration and code examples
+
+---
+
+## 📊 Tool Categories
+
+### Development (40+ tools)
+JSON/XML processing, encoding/decoding, formatters, validators, generators, converters, hash functions, text processing, and development utilities.
+
+### Multimedia (10+ tools)
+Image editing, format conversion, color tools, QR codes, ASCII art, gradients, and visual content creation.
+
+### Gaming (5+ tools)
+RPG tools, dice rollers, name generators, character creators, and tabletop gaming utilities.
+
+### Utility (5+ tools)
+Calculator, timer, text generators, and general-purpose tools.
 
 ---
 
@@ -196,6 +289,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **⭐ Star this repo if you find it useful!**
 
-Made with ❤️ by Daniel Mark
+**Built with ❤️ by Daniel Mark**
+
+*The ultimate toolkit for developers, designers, and creators*
 
 </div>
