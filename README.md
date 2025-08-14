@@ -8,7 +8,7 @@
 ![Tailwind](https://img.shields.io/badge/Tailwind-4.1.11-38B2AC?style=for-the-badge&logo=tailwind-css)
 
 
-[🚀 Live Demo](#) • [📖 Documentation](#features) • [🛠️ Installation](#installation) • [⚙️ Tools](#tools)
+[🚀 Live Demo](https://ax-gaming-sepia.vercel.app/#/) • [📖 Documentation](#features) • [🛠️ Installation](#installation) • [⚙️ Tools](#tools)
 
 </div>
 
