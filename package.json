@@ -1,28 +1,133 @@
 {
-  "name": "game-dashboard-cod-style",
-  "version": "1.0.0",
-  "private": true,
+  "name": "axtools-pro",
+  "version": "2.0.0",
+  "description": "Ultimate Developer Toolkit - 60+ Professional Tools for Developers, Designers & Creators",
+  "private": false,
+  "type": "module",
+  "keywords": [
+    "developer-tools",
+    "toolkit",
+    "react",
+    "vite",
+    "tailwindcss",
+    "json-formatter",
+    "image-editor",
+    "base64-encoder",
+    "regex-tester",
+    "color-picker",
+    "qr-generator",
+    "gaming-tools",
+    "utilities",
+    "web-app",
+    "pwa"
+  ],
+  "author": {
+    "name": "Daniel Mark",
+    "email": "danielmarkjohn@gmail.com",
+    "url": "https://github.com/danielmarkjohn"
+  },
+  "license": "MIT",
+  "homepage": "https://ax-gaming-sepia.vercel.app/#/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielmarkjohn/AxGaming.gitt"
+  },
+  "bugs": {
+    "url": "https://github.com/danielmarkjohn/AxGaming/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview --port 5173"
+    "preview": "vite preview --port 5173 --host",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext js,jsx --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,css,md}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,css,md}\"",
+    "type-check": "tsc --noEmit",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "analyze": "npm run build && npx vite-bundle-analyzer dist/stats.html",
+    "clean": "rm -rf dist node_modules/.vite",
+    "prepare": "husky install",
+    "deploy": "npm run build && vercel --prod"
   },
   "dependencies": {
+    "clsx": "^2.1.0",
+    "framer-motion": "^11.0.8",
     "jszip": "^3.10.1",
     "lucide-react": "^0.539.0",
     "mammoth": "^1.10.0",
     "pdfjs-dist": "^5.4.54",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-pdf": "^10.0.1",
-    "react-router-dom": "^6.30.1"
+    "react-router-dom": "^6.30.1",
+    "react-use": "^17.5.0",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@eslint/js": "^9.15.0",
     "@tailwindcss/postcss": "^4.1.11",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
     "@vitejs/plugin-react": "^5.0.0",
+    "@vitest/coverage-v8": "^2.1.8",
+    "@vitest/ui": "^2.1.8",
     "autoprefixer": "^10.4.21",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.12.0",
+    "husky": "^9.1.7",
+    "jsdom": "^25.0.1",
+    "lint-staged": "^15.2.10",
     "postcss": "^8.5.6",
+    "prettier": "^3.3.3",
     "tailwindcss": "^4.1.11",
-    "vite": "^5.0.0"
+    "typescript": "^5.6.3",
+    "vite": "^5.4.19",
+    "vite-bundle-analyzer": "^0.11.0",
+    "vite-plugin-pwa": "^0.21.1",
+    "vitest": "^2.1.8",
+    "workbox-window": "^7.3.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,md,json}": [
+      "prettier --write"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "pwa": {
+    "name": "AxTools Pro",
+    "short_name": "AxTools",
+    "description": "Ultimate Developer Toolkit with 60+ Professional Tools",
+    "theme_color": "#1a1a2e",
+    "background_color": "#0f0f23",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "start_url": "/"
   }
 }
