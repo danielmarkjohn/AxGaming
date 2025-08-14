@@ -2,7 +2,7 @@ export const HOMEPAGE_CONFIG = {
   // Search configuration
   SEARCH: {
     MIN_CHARS: 2,
-    PLACEHOLDER: 'Search anything...',
+    PLACEHOLDER: 'Search for any Tools/Utilities....',
     MAX_WIDTH: 'max-w-md'
   },
   

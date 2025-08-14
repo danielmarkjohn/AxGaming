@@ -60,14 +60,16 @@
 
 .in-content-ad {
   @apply w-full;
-  max-width: 240px;
+  max-width: 288px; /* 18rem = 288px, ensures 250px+ width */
+  min-width: 250px;
 }
 
 /* Responsive ad adjustments */
 @media (max-width: 1279px) {
-  /* Hide sidebar ads on screens smaller than xl */
+  /* Completely hide sidebar ads on smaller screens */
   .sidebar-ad,
   .in-content-ad {
+    display: none !important;
     visibility: hidden;
     width: 0;
     min-width: 0;

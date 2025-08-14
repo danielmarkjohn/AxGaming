@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 export default function AdSense({ 
   adSlot, 
@@ -7,18 +7,36 @@ export default function AdSense({
   style = {},
   className = ''
 }) {
+  const adRef = useRef(null)
+
   useEffect(() => {
-    try {
-      if (window.adsbygoogle) {
-        window.adsbygoogle.push({})
+    const loadAd = () => {
+      try {
+        // Check if container has width before loading ad
+        if (adRef.current) {
+          const containerWidth = adRef.current.offsetWidth
+          if (containerWidth < 250) {
+            console.log('Container too narrow for ad:', containerWidth, '- skipping ad load')
+            return
+          }
+          console.log('Loading ad in container width:', containerWidth)
+        }
+
+        if (window.adsbygoogle && window.adsbygoogle.loaded !== true) {
+          window.adsbygoogle.push({})
+        }
+      } catch (error) {
+        console.log('AdSense error:', error)
       }
-    } catch (error) {
-      console.log('AdSense error:', error)
     }
+
+    // Delay ad loading to ensure container is properly sized
+    const timer = setTimeout(loadAd, 200)
+    return () => clearTimeout(timer)
   }, [])
 
   return (
-    <div className={`adsense-container ${className}`} style={style}>
+    <div ref={adRef} className={`adsense-container ${className}`} style={style}>
       <ins
         className="adsbygoogle"
         style={{ display: 'block', ...style }}
