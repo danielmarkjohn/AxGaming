@@ -40,6 +40,52 @@
   }
 }
 
+/* AdSense styling */
+.adsense-container {
+  @apply flex justify-center items-center;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  min-height: 90px;
+  border-radius: 8px;
+}
+
+.banner-ad {
+  @apply w-full max-w-4xl;
+}
+
+.sidebar-ad {
+  @apply w-full;
+  max-width: 300px;
+}
+
+.in-content-ad {
+  @apply w-full;
+  max-width: 240px;
+}
+
+/* Responsive ad adjustments */
+@media (max-width: 1279px) {
+  /* Hide sidebar ads on screens smaller than xl */
+  .sidebar-ad,
+  .in-content-ad {
+    visibility: hidden;
+    width: 0;
+    min-width: 0;
+    max-width: 0;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .adsense-container {
+    min-height: 50px;
+  }
+  
+  .banner-ad {
+    @apply max-w-full;
+  }
+}
+
 @layer utilities {
   .smooth { transition: all 220ms cubic-bezier(.2,.9,.2,1); }
   .hud-glow { box-shadow: 0 6px 40px rgba(124,58,237,0.12), inset 0 -8px 30px rgba(0,0,0,0.45); }

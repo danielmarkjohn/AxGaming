@@ -6,6 +6,14 @@ export const HOMEPAGE_CONFIG = {
     MAX_WIDTH: 'max-w-md'
   },
   
+  // Categories configuration
+  CATEGORIES: {
+    ALL: 'all',
+    DEVELOPMENT: 'development',
+    MULTIMEDIA: 'multimedia',
+    GAMING: 'gaming'
+  },
+  
   // User information
   USER: {
     NAME: 'Daniel Mark',

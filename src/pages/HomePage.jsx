@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Search, X, Sun, Moon, Wrench } from 'lucide-react'
+import { Search, X, Sun, Moon, Wrench, ChevronDown } from 'lucide-react'
 import { TOOLS_CONFIG } from '../@config/tools'
 import { HOMEPAGE_CONFIG } from '../@config/homepage'
+import { BannerAd, InContentAd } from '../@components/AdSense'
 
 export default function HomePage({ onNavigate }) {
   const [searchQuery, setSearchQuery] = useState('')
+  const [selectedCategories, setSelectedCategories] = useState(['all'])
+  const [showCategoryDropdown, setShowCategoryDropdown] = useState(false)
   const [theme, setTheme] = useState(() => {
     try {
       const saved = localStorage.getItem('dashboard_settings')
@@ -12,6 +15,13 @@ export default function HomePage({ onNavigate }) {
     } catch {}
     return document.body.getAttribute('data-theme') || 'dark'
   })
+
+  const categories = [
+    { id: 'all', label: 'All', count: TOOLS_CONFIG.length },
+    { id: 'development', label: 'Development', count: TOOLS_CONFIG.filter(t => t.category === 'development').length },
+    { id: 'multimedia', label: 'Multimedia', count: TOOLS_CONFIG.filter(t => t.category === 'multimedia').length },
+    { id: 'gaming', label: 'Gaming', count: TOOLS_CONFIG.filter(t => t.category === 'gaming').length }
+  ]
 
   useEffect(() => {
     const finalTheme = theme === 'auto'
@@ -29,14 +39,42 @@ export default function HomePage({ onNavigate }) {
     } catch {}
   }
 
-  // Filter tools based on search query
-  const filteredTools = searchQuery.length >= HOMEPAGE_CONFIG.SEARCH.MIN_CHARS 
-    ? TOOLS_CONFIG.filter(tool => 
-        tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        tool.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        tool.category.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : TOOLS_CONFIG
+  const handleCategoryToggle = (categoryId) => {
+    if (categoryId === 'all') {
+      setSelectedCategories(['all'])
+    } else {
+      setSelectedCategories(prev => {
+        const filtered = prev.filter(c => c !== 'all')
+        if (filtered.includes(categoryId)) {
+          const newCategories = filtered.filter(c => c !== categoryId)
+          return newCategories.length === 0 ? ['all'] : newCategories
+        } else {
+          return [...filtered, categoryId]
+        }
+      })
+    }
+  }
+
+  const removeCategoryChip = (categoryId) => {
+    if (categoryId === 'all') return
+    setSelectedCategories(prev => {
+      const newCategories = prev.filter(c => c !== categoryId)
+      return newCategories.length === 0 ? ['all'] : newCategories
+    })
+  }
+
+  // Filter tools based on search query and categories
+  const filteredTools = TOOLS_CONFIG.filter(tool => {
+    const matchesSearch = searchQuery.length < HOMEPAGE_CONFIG.SEARCH.MIN_CHARS || 
+      tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      tool.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      tool.category.toLowerCase().includes(searchQuery.toLowerCase())
+    
+    const matchesCategory = selectedCategories.includes('all') || 
+      selectedCategories.includes(tool.category)
+    
+    return matchesSearch && matchesCategory
+  })
 
   const clearSearch = () => {
     setSearchQuery('')
@@ -86,7 +124,7 @@ export default function HomePage({ onNavigate }) {
         </header>
 
         {/* Search Bar */}
-        <div className="flex justify-center mb-8 px-4">
+        <div className="flex justify-center mb-4 px-4">
           <div className={`relative w-full ${HOMEPAGE_CONFIG.SEARCH.MAX_WIDTH}`}>
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <Search className="h-5 w-5 text-muted" />
@@ -109,40 +147,121 @@ export default function HomePage({ onNavigate }) {
           </div>
         </div>
 
-
-        {/* No Results Message */}
-        {searchQuery.length >= HOMEPAGE_CONFIG.SEARCH.MIN_CHARS && filteredTools.length === 0 && (
-          <div className="text-center mb-8">
-            <p className="text-white/60 mb-2">{HOMEPAGE_CONFIG.MESSAGES.NO_RESULTS} "{searchQuery}"</p>
-            <p className="text-white/40 text-sm">{HOMEPAGE_CONFIG.MESSAGES.TRY_DIFFERENT}</p>
+        {/* Category Chips */}
+        {selectedCategories.length > 0 && !selectedCategories.includes('all') && (
+          <div className="flex justify-center mb-8 px-4">
+            <div className="flex flex-wrap gap-2 max-w-xl">
+              {selectedCategories.map(categoryId => {
+                const category = categories.find(c => c.id === categoryId)
+                return (
+                  <div
+                    key={categoryId}
+                    className="flex items-center gap-2 px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-sm text-blue-300"
+                  >
+                    <span>{category?.label}</span>
+                    <button
+                      onClick={() => removeCategoryChip(categoryId)}
+                      className="hover:text-white transition-colors"
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         )}
 
-        {/* All Tools Grid */}
-        <div className={`grid ${HOMEPAGE_CONFIG.UI.GRID_BREAKPOINTS.SM} ${HOMEPAGE_CONFIG.UI.GRID_BREAKPOINTS.LG} ${HOMEPAGE_CONFIG.UI.GRID_BREAKPOINTS.XL} gap-4`}>
-          {(searchQuery.length >= HOMEPAGE_CONFIG.SEARCH.MIN_CHARS ? filteredTools : TOOLS_CONFIG).map(tool => (
-            <div
-              key={tool.id}
-              onClick={() => { window.location.hash = `#/tools/${tool.id}` }}
-              className="group cursor-pointer p-4 bg-surface panel-border hover:border-white/30 rounded-xl transition-all duration-200"
+        {/* Category Dropdown */}
+        <div className="flex justify-center mb-8 px-4">
+          <div className="relative">
+            <button
+              onClick={() => setShowCategoryDropdown(!showCategoryDropdown)}
+              className="flex items-center gap-2 px-4 py-1 bg-surface panel-border rounded-lg text-var hover:border-white/30 transition-all duration-200"
             >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-lg accent-gradient flex items-center justify-center">
-                  <Wrench className="w-5 h-5 text-white" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h4 className="text-var font-medium truncate group-hover:text-white transition-colors">
-                    {tool.title}
-                  </h4>
-                  <p className="text-xs text-muted capitalize">{tool.category}</p>
-                </div>
+              <span>Categories</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${showCategoryDropdown ? 'rotate-180' : ''}`} />
+            </button>
+            
+            {showCategoryDropdown && (
+              <div className="absolute top-full mt-2 w-48 bg-surface panel-border rounded-lg shadow-lg z-10">
+                {categories.map(category => (
+                  <label
+                    key={category.id}
+                    className="flex items-center gap-3 px-4 py-2 hover:bg-white/5 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedCategories.includes(category.id)}
+                      onChange={() => handleCategoryToggle(category.id)}
+                      className="w-4 h-4 text-blue-500 bg-transparent border-white/20 rounded focus:ring-blue-500"
+                    />
+                    <span className="text-var text-sm flex-1">{category.label}</span>
+                    <span className="text-muted text-xs">({category.count})</span>
+                  </label>
+                ))}
               </div>
-              <p className="text-sm text-muted line-clamp-2">{tool.desc}</p>
+            )}
+          </div>
+        </div>
+
+        {/* Ad below dropdown - always visible */}
+        <div className="mb-8 flex justify-center">
+          <BannerAd className="rounded-lg overflow-hidden" />
+        </div>
+
+        {/* Main content area with sidebar ads on desktop */}
+        <div className="flex gap-6">
+          {/* Left sidebar ad - desktop only */}
+          <div className="w-60 flex-shrink-0">
+            <div className="sticky top-6">
+              <InContentAd className="rounded-lg overflow-hidden" />
             </div>
-          ))}
+          </div>
+
+          {/* Main content */}
+          <div className="flex-1 min-w-0">
+            {/* No Results Message */}
+            {filteredTools.length === 0 && (
+              <div className="text-center mb-8">
+                <p className="text-white/60 mb-2">
+                  {searchQuery.length >= HOMEPAGE_CONFIG.SEARCH.MIN_CHARS 
+                    ? `${HOMEPAGE_CONFIG.MESSAGES.NO_RESULTS} "${searchQuery}"`
+                    : 'No tools found for selected categories'
+                  }
+                </p>
+                <p className="text-white/40 text-sm">{HOMEPAGE_CONFIG.MESSAGES.TRY_DIFFERENT}</p>
+              </div>
+            )}
+
+            {/* All Tools Grid - maintain consistent grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4">
+              {filteredTools.map((tool) => (
+                <div
+                  key={tool.id}
+                  onClick={() => { window.location.hash = `#/tools/${tool.id}` }}
+                  className="group cursor-pointer p-4 bg-surface panel-border hover:border-white/30 rounded-xl transition-all duration-200 min-w-0"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-lg accent-gradient flex items-center justify-center">
+                      <Wrench className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-var font-medium truncate group-hover:text-white transition-colors">
+                        {tool.title}
+                      </h4>
+                      <p className="text-xs text-muted capitalize">{tool.category}</p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted line-clamp-2">{tool.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right sidebar ad - desktop only */}
         </div>
       </div>
-
     </div>
   )
 }

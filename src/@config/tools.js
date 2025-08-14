@@ -1,17 +1,17 @@
 export const TOOLS_CONFIG = [
-  // Existing tools
+  // Existing tools with updated categories
   {
     id: 'calculator',
     title: 'Calculator',
     desc: 'Advanced scientific calculator with history',
-    category: 'utility',
+    category: 'development',
     component: 'Calculator'
   },
   {
     id: 'timer',
     title: 'Timer',
     desc: 'Countdown timer and stopwatch',
-    category: 'utility',
+    category: 'development',
     component: 'Timer'
   },
 
@@ -21,7 +21,7 @@ export const TOOLS_CONFIG = [
     title: 'Base64 Encode/Decode', 
     component: 'Base64Encoder',
     desc: 'Encode and decode Base64 data safely',
-    category: 'encoder'
+    category: 'development'
   },
 
   // Formatters & Validators
@@ -30,28 +30,28 @@ export const TOOLS_CONFIG = [
     title: 'JSON Formatter', 
     component: 'JsonFormatter',
     desc: 'Format and beautify JSON data',
-    category: 'formatter'
+    category: 'development'
   },
   { 
     id: 'timestamp-converter', 
     title: 'Timestamp Converter', 
     component: 'TimestampConverter',
     desc: 'Convert Unix timestamps to readable dates',
-    category: 'formatter'
+    category: 'development'
   },
   { 
     id: 'regex-tester', 
     title: 'Regex Tester', 
     component: 'RegexTester',
     desc: 'Test and debug regular expressions',
-    category: 'formatter'
+    category: 'development'
   },
   { 
     id: 'css-units-converter', 
     title: 'CSS Units Converter', 
     component: 'CssUnitsConverter',
     desc: 'Convert between CSS units (px, rem, em, vw, etc.)',
-    category: 'formatter'
+    category: 'development'
   },
 
   // Generators
@@ -60,133 +60,209 @@ export const TOOLS_CONFIG = [
     title: 'UUID Generator', 
     component: 'UuidGenerator',
     desc: 'Generate random unique identifiers',
-    category: 'generator'
+    category: 'development'
   },
   {
     id: 'jwt-parser',
     title: 'JWT Parser',
     component: 'JwtParser',
     desc: 'Decode and view JWT token contents',
-    category: 'formatter'
+    category: 'development'
   },
   {
     id: 'svg-viewer',
     title: 'SVG Viewer',
     component: 'SvgViewer',
     desc: 'Preview and validate SVG code',
-    category: 'formatter'
+    category: 'development'
   },
   {
     id: 'lorem-ipsum-generator',
     title: 'Lorem Ipsum Generator',
     component: 'LoremIpsumGenerator',
     desc: 'Generate placeholder text',
-    category: 'generator'
+    category: 'development'
   },
 
-  // New tools (batch 1)
+  // Development tools (batch 1)
   {
     id: 'csv-to-json',
     title: 'CSV to JSON',
     component: 'CsvToJson',
     desc: 'Convert CSV data into JSON for APIs and data processing',
-    category: 'converter'
+    category: 'development'
   },
   {
     id: 'url-encoder',
     title: 'URL Encode/Decode',
     component: 'UrlEncoder',
     desc: 'Encode or decode URL strings',
-    category: 'encoder'
+    category: 'development'
   },
   {
     id: 'query-to-json',
     title: 'Query Parameters to JSON',
     component: 'QueryToJson',
     desc: 'Turn URL query parameters into a structured JSON object',
-    category: 'converter'
+    category: 'development'
   },
   {
     id: 'hex-to-rgb',
     title: 'HEX to RGB',
     component: 'HexToRgb',
     desc: 'Convert HEX colors to RGB and get CSS/Swift/Android snippets',
-    category: 'converter'
+    category: 'development'
   },
   {
     id: 'image-to-base64',
     title: 'Image to Base64',
     component: 'ImageToBase64',
     desc: 'Convert images to Base64 for embedding',
-    category: 'converter'
+    category: 'multimedia'
   },
   {
     id: 'json-to-csv',
     title: 'JSON to CSV',
     component: 'JsonToCsv',
     desc: 'Convert JSON arrays to CSV',
-    category: 'converter'
+    category: 'development'
   },
   {
     id: 'number-base-changer',
     title: 'Number Base Changer',
     component: 'NumberBaseChanger',
     desc: 'Convert numbers between binary, octal, decimal and hex',
-    category: 'converter'
+    category: 'development'
   },
   {
     id: 'image-resizer',
     title: 'Image Resizer',
     component: 'ImageResizer',
     desc: 'Resize images with aspect ratio control and format options',
-    category: 'converter'
+    category: 'multimedia'
   },
   {
     id: 'hash-generator',
     title: 'Hash Generator',
     component: 'HashGenerator',
     desc: 'Generate secure SHA hashes (256/384/512)',
-    category: 'security'
+    category: 'development'
   },
   {
     id: 'json-yaml',
     title: 'JSON ↔ YAML (basic)',
     component: 'JsonYaml',
     desc: 'Convert between JSON and YAML (subset, no deps)',
-    category: 'converter'
+    category: 'development'
   },
   {
     id: 'sql-minifier',
     title: 'SQL Minifier',
     component: 'SqlMinifier',
     desc: 'Minify SQL by removing comments and whitespace',
-    category: 'formatter'
+    category: 'development'
   },
   {
     id: 'env-to-netlify',
     title: '.env to netlify.toml',
     component: 'EnvToNetlifyToml',
     desc: 'Convert .env variables to netlify.toml [build.environment]',
-    category: 'converter'
+    category: 'development'
   },
   {
     id: 'har-viewer',
     title: 'HAR file viewer',
     component: 'HarViewer',
     desc: 'View and analyze HAR files',
-    category: 'analyzer'
+    category: 'development'
   },
 
-  // New tools (batch 2)
-  { id: 'xml-to-json', title: 'XML to JSON', component: 'XmlToJson', desc: 'Convert XML to JSON via DOMParser', category: 'converter' },
-  { id: 'html-escape', title: 'HTML Escape/Unescape', component: 'HtmlEscape', desc: 'Convert text to HTML entities or back', category: 'converter' },
-  { id: 'text-case', title: 'Text Case Converter', component: 'TextCase', desc: 'camelCase, snake_case, kebab-case, PascalCase, Title Case', category: 'converter' },
-  { id: 'palette-generator', title: 'Color Palette Generator', component: 'PaletteGenerator', desc: 'Generate palette shades from a seed color', category: 'design' },
-  { id: 'ulid-generator', title: 'ULID Generator', component: 'UlidGenerator', desc: 'Create lexicographically sortable IDs', category: 'generator' },
-  { id: 'date-math', title: 'Date Math Calculator', component: 'DateMath', desc: 'Add/subtract time from a base date', category: 'time' },
-  { id: 'random-data', title: 'Random Data Generator', component: 'RandomData', desc: 'Generate sample names/emails/UUIDs data', category: 'generator' },
-  { id: 'string-similarity', title: 'String Similarity', component: 'StringSimilarity', desc: 'Levenshtein distance and similarity', category: 'analyzer' },
-  { id: 'byte-size', title: 'Byte Size Converter', component: 'ByteSize', desc: 'Convert bytes to KB/MB/GB (SI/IEC) and parse sizes', category: 'converter' },
-  { id: 'jwt-builder', title: 'JWT Builder (HS*)', component: 'JwtBuilder', desc: 'Build HS256/384/512 JWTs with WebCrypto', category: 'security' }
+  // Development tools (batch 2)
+  { id: 'xml-to-json', title: 'XML to JSON', component: 'XmlToJson', desc: 'Convert XML to JSON via DOMParser', category: 'development' },
+  { id: 'html-escape', title: 'HTML Escape/Unescape', component: 'HtmlEscape', desc: 'Convert text to HTML entities or back', category: 'development' },
+  { id: 'text-case', title: 'Text Case Converter', component: 'TextCase', desc: 'camelCase, snake_case, kebab-case, PascalCase, Title Case', category: 'development' },
+  { id: 'palette-generator', title: 'Color Palette Generator', component: 'PaletteGenerator', desc: 'Generate palette shades from a seed color', category: 'development' },
+  { id: 'ulid-generator', title: 'ULID Generator', component: 'UlidGenerator', desc: 'Create lexicographically sortable IDs', category: 'development' },
+  { id: 'date-math', title: 'Date Math Calculator', component: 'DateMath', desc: 'Add/subtract time from a base date', category: 'development' },
+  { id: 'random-data', title: 'Random Data Generator', component: 'RandomData', desc: 'Generate sample names/emails/UUIDs data', category: 'development' },
+  { id: 'string-similarity', title: 'String Similarity', component: 'StringSimilarity', desc: 'Levenshtein distance and similarity', category: 'development' },
+  { id: 'byte-size', title: 'Byte Size Converter', component: 'ByteSize', desc: 'Convert bytes to KB/MB/GB (SI/IEC) and parse sizes', category: 'development' },
+  { id: 'jwt-builder', title: 'JWT Builder (HS*)', component: 'JwtBuilder', desc: 'Build HS256/384/512 JWTs with WebCrypto', category: 'development' },
+
+  // New Multimedia Tools
+  {
+    id: 'color-picker',
+    title: 'Color Picker & Analyzer',
+    component: 'ColorPicker',
+    desc: 'Pick colors from images and get color codes in various formats',
+    category: 'multimedia'
+  },
+  {
+    id: 'image-format-converter',
+    title: 'Image Format Converter',
+    component: 'ImageFormatConverter',
+    desc: 'Convert between PNG, JPEG, WebP formats in browser',
+    category: 'multimedia'
+  },
+
+  // New Gaming Tools
+  {
+    id: 'dice-roller',
+    title: 'Dice Roller',
+    component: 'DiceRoller',
+    desc: 'Roll various dice combinations for tabletop games',
+    category: 'gaming'
+  },
+  {
+    id: 'random-name-generator',
+    title: 'Fantasy Name Generator',
+    component: 'FantasyNameGenerator',
+    desc: 'Generate character names for RPGs and fantasy games',
+    category: 'gaming'
+  },
+  {
+    id: 'password-generator',
+    title: 'Password Generator',
+    component: 'PasswordGenerator',
+    desc: 'Generate secure passwords with custom rules',
+    category: 'gaming'
+  },
+  {
+    id: 'character-stats',
+    title: 'RPG Character Stats',
+    component: 'CharacterStats',
+    desc: 'Roll character stats for D&D and other RPGs',
+    category: 'gaming'
+  },
+  {
+    id: 'loot-generator',
+    title: 'Loot Generator',
+    component: 'LootGenerator',
+    desc: 'Generate random loot and treasure for RPG games',
+    category: 'gaming'
+  },
+
+  // Additional Multimedia Tools
+  {
+    id: 'qr-generator',
+    title: 'QR Code Generator',
+    component: 'QrGenerator',
+    desc: 'Generate QR codes for text, URLs, and data',
+    category: 'multimedia'
+  },
+  {
+    id: 'ascii-art',
+    title: 'ASCII Art Generator',
+    component: 'AsciiArt',
+    desc: 'Convert text to ASCII art with various fonts',
+    category: 'multimedia'
+  },
+  {
+    id: 'gradient-generator',
+    title: 'CSS Gradient Generator',
+    component: 'GradientGenerator',
+    desc: 'Create beautiful CSS gradients with live preview',
+    category: 'multimedia'
+  }
 ]
 
