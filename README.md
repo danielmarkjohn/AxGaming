@@ -16,33 +16,27 @@
 
 ## ✨ Features
 
-### 🎯 **Modern Dashboard Experience**
-- **Military-Grade UI** — Call of Duty inspired aesthetics with 3D card effects
-- **Responsive Design** — Perfect on desktop, tablet, and mobile devices
-- **Real-time Search** — Find tools instantly with smart filtering
-- **Dark Theme** — Easy on the eyes with gradient backgrounds
-- **Category Organization** — Tools grouped by Development, Multimedia, and Gaming
-
 ### 🛠️ **Professional Toolkit**
 - **60+ Built-in Tools** — Comprehensive collection for developers and creators
 - **Layer-based Image Editor** — Professional image editing with brushes, shapes, and layers
 - **Advanced Converters** — JSON, CSV, Base64, timestamps, and more
 - **Code Utilities** — Formatters, validators, generators, and analyzers
 - **Gaming Tools** — RPG generators, dice rollers, and character creators
+- **Category Organization** — Tools grouped by Development, Multimedia, and Gaming
 
 ---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ 
+- Node.js 22+ 
 - npm or yarn
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/danielmarkjohn/axtools-pro.git
+git clone https://github.com/danielmarkjohn/AxGaming.git
 cd axtools-pro
 
 # Install dependencies
