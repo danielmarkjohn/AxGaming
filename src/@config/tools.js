@@ -361,9 +361,9 @@ export const TOOLS_CONFIG = [
   },
   {
     id: 'image-editor-basic',
-    title: 'Basic Image Editor',
+    title: 'Image Editor',
     component: 'ImageEditorBasic',
-    desc: 'Simple image editing with filters and adjustments',
+    desc: 'Image editing with filters and adjustments',
     category: 'multimedia'
   }
 ]
