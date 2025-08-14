@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { Search, X, Sun, Moon, Wrench, ChevronDown } from 'lucide-react'
+import { Search, X, Wrench, ChevronDown } from 'lucide-react'
 import { TOOLS_CONFIG } from '../@config/tools'
 import { HOMEPAGE_CONFIG } from '../@config/homepage'
 import { BannerAd, InContentAd } from '../@components/AdSense'
+import { InlineLoading } from '../@components/Loading'
+import Header from '../@components/Header'
 
 export default function HomePage({ onNavigate }) {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategories, setSelectedCategories] = useState(['all'])
   const [showCategoryDropdown, setShowCategoryDropdown] = useState(false)
   const [visitorCount, setVisitorCount] = useState(0)
+  const [toolsLoading, setToolsLoading] = useState(true)
   const [theme, setTheme] = useState(() => {
     try {
       const saved = localStorage.getItem('dashboard_settings')
@@ -16,6 +19,18 @@ export default function HomePage({ onNavigate }) {
     } catch {}
     return document.body.getAttribute('data-theme') || 'dark'
   })
+
+  // Simulate loading tools (you can replace this with actual async loading if needed)
+  useEffect(() => {
+    const loadTools = async () => {
+      setToolsLoading(true)
+      // Simulate loading time
+      await new Promise(resolve => setTimeout(resolve, 200))
+      setToolsLoading(false)
+    }
+    
+    loadTools()
+  }, [])
 
   const categories = [
     { id: 'all', label: 'All', count: TOOLS_CONFIG.length },
@@ -125,53 +140,12 @@ export default function HomePage({ onNavigate }) {
 
   return (
     <div className="min-h-screen app-bg">
-      <div className="max-w-7xl mx-auto p-6">
-
-        <header className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold tracking-wide bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              {HOMEPAGE_CONFIG.UI.TITLE}
-            </h1>
-            <p className="text-muted mt-2">
-              Made by {HOMEPAGE_CONFIG.USER.NAME} ❤️ •
-              <a
-                href={HOMEPAGE_CONFIG.USER.GITHUB_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-300 transition-colors ml-1"
-              >
-                GitHub
-              </a>
-              {' • '}
-              <a
-                href={HOMEPAGE_CONFIG.USER.LINKEDIN_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-300 transition-colors"
-              >
-                LinkedIn
-              </a>
-            </p>
-            <h3 className="text-muted">Search for any Tools/Utilities</h3>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="text-center">
-              <div className="text-sm text-muted">Visitors</div>
-              <div className="text-lg font-bold text-blue-400">{visitorCount.toLocaleString()}</div>
-            </div>
-            <button
-              onClick={toggleTheme}
-              className="p-3 rounded-xl bg-surface panel-border hover:border-white/30 smooth"
-              title="Toggle theme"
-            >
-              {theme === 'dark' ? (
-                <Sun className="w-5 h-5 text-yellow-400" />
-              ) : (
-                <Moon className="w-5 h-5 text-blue-500" />
-              )}
-            </button>
-          </div>
-        </header>
+      <div className="max-w-screen-2xl mx-auto p-6">
+        <Header 
+          theme={theme} 
+          onToggleTheme={toggleTheme} 
+          visitorCount={visitorCount} 
+        />
 
         {/* Search Bar */}
         <div className="flex justify-center mb-4 px-4">
@@ -271,8 +245,15 @@ export default function HomePage({ onNavigate }) {
 
           {/* Main content */}
           <div className="flex-1 min-w-0">
+            {/* Loading state */}
+            {toolsLoading && (
+              <div className="min-h-96">
+                <InlineLoading message="Loading tools..." size="lg" />
+              </div>
+            )}
+
             {/* No Results Message */}
-            {filteredTools.length === 0 && (
+            {!toolsLoading && filteredTools.length === 0 && (
               <div className="text-center mb-8">
                 <p className="text-white/60 mb-2">
                   {searchQuery.length >= HOMEPAGE_CONFIG.SEARCH.MIN_CHARS 
@@ -285,28 +266,30 @@ export default function HomePage({ onNavigate }) {
             )}
 
             {/* All Tools Grid - maintain consistent grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4">
-              {filteredTools.map((tool) => (
-                <div
-                  key={tool.id}
-                  onClick={() => { window.location.hash = `#/tools/${tool.id}` }}
-                  className="group cursor-pointer p-4 bg-surface panel-border hover:border-white/30 rounded-xl transition-all duration-200 min-w-0"
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-lg accent-gradient flex items-center justify-center">
-                      <Wrench className="w-5 h-5 text-white" />
+            {!toolsLoading && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {filteredTools.map((tool) => (
+                  <div
+                    key={tool.id}
+                    onClick={() => { window.location.hash = `#/tools/${tool.id}` }}
+                    className="group cursor-pointer p-4 bg-surface panel-border hover:border-white/30 rounded-xl transition-all duration-200 min-w-0"
+                  >
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-lg accent-gradient flex items-center justify-center">
+                        <Wrench className="w-5 h-5 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-var font-medium truncate group-hover:text-white transition-colors">
+                          {tool.title}
+                        </h4>
+                        <p className="text-xs text-muted capitalize">{tool.category}</p>
+                      </div>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-var font-medium truncate group-hover:text-white transition-colors">
-                        {tool.title}
-                      </h4>
-                      <p className="text-xs text-muted capitalize">{tool.category}</p>
-                    </div>
+                    <p className="text-sm text-muted line-clamp-2">{tool.desc}</p>
                   </div>
-                  <p className="text-sm text-muted line-clamp-2">{tool.desc}</p>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Right sidebar ad - desktop only */}

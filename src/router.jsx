@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react'
 import { TOOLS_CONFIG } from './@config/tools'
+import { InlineLoading } from './@components/Loading'
 
 // map component name to lazy import used in overlay
 const lazyTools = {
@@ -21,6 +22,19 @@ const lazyTools = {
   ByteSize: React.lazy(() => import('./@modules/tools/byte-size/ByteSize')),
   JwtBuilder: React.lazy(() => import('./@modules/tools/jwt-builder/JwtBuilder')),
   
+  // Quick wins - Text Processing
+  TextReverser: React.lazy(() => import('./@modules/tools/text-reverser/TextReverser')),
+  StringRepeater: React.lazy(() => import('./@modules/tools/string-repeater/StringRepeater')),
+  RandomPicker: React.lazy(() => import('./@modules/tools/random-picker/RandomPicker')),
+  ListSorter: React.lazy(() => import('./@modules/tools/list-sorter/ListSorter')),
+  NumberCalculator: React.lazy(() => import('./@modules/tools/number-calculator/NumberCalculator')),
+  
+  // Unicode and text encoding tools
+  UnicodeSpoof: React.lazy(() => import('./@modules/tools/unicode-spoof/UnicodeSpoof')),
+  ZalgoGenerator: React.lazy(() => import('./@modules/tools/zalgo-generator/ZalgoGenerator')),
+  Utf8Converter: React.lazy(() => import('./@modules/tools/utf8-converter/Utf8Converter')),
+  AsciiConverter: React.lazy(() => import('./@modules/tools/ascii-converter/AsciiConverter')),
+  
   // Existing multimedia tools
   ColorPicker: React.lazy(() => import('./@modules/tools/color-picker/ColorPicker')),
   ImageFormatConverter: React.lazy(() => import('./@modules/tools/image-format-converter/ImageFormatConverter')),
@@ -38,6 +52,12 @@ const lazyTools = {
   PasswordGenerator: React.lazy(() => import('./@modules/tools/password-generator/PasswordGenerator')),
   CharacterStats: React.lazy(() => import('./@modules/tools/character-stats/CharacterStats')),
   LootGenerator: React.lazy(() => import('./@modules/tools/loot-generator/LootGenerator')),
+  // Multimedia tools
+  PdfViewer: React.lazy(() => import('./@modules/tools/pdf-viewer/PdfViewer')),
+  DocViewer: React.lazy(() => import('./@modules/tools/doc-viewer/DocViewer')),
+  VideoPlayer: React.lazy(() => import('./@modules/tools/video-player/VideoPlayer')),
+  AudioPlayer: React.lazy(() => import('./@modules/tools/audio-player/AudioPlayer')),
+  ImageEditorBasic: React.lazy(() => import('./@modules/tools/image-editor-basic/ImageEditorBasic')),
 }
 
 export function renderToolById(id) {
@@ -46,7 +66,7 @@ export function renderToolById(id) {
   const Cmp = lazyTools[tool.component]
   if (!Cmp) return null
   return (
-    <Suspense fallback={<div className="p-6 text-white">Loading {tool.title}...</div>}>
+    <Suspense fallback={<InlineLoading message={`Loading ${tool.title}...`} />}>
       <Cmp />
     </Suspense>
   )

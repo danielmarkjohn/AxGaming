@@ -16,48 +16,48 @@ export const TOOLS_CONFIG = [
   },
 
   // Encoding/Decoding Tools
-  { 
-    id: 'base64-encoder', 
-    title: 'Base64 Encode/Decode', 
+  {
+    id: 'base64-encoder',
+    title: 'Base64 Encode/Decode',
     component: 'Base64Encoder',
     desc: 'Encode and decode Base64 data safely',
     category: 'development'
   },
 
   // Formatters & Validators
-  { 
-    id: 'json-formatter', 
-    title: 'JSON Formatter', 
+  {
+    id: 'json-formatter',
+    title: 'JSON Formatter',
     component: 'JsonFormatter',
     desc: 'Format and beautify JSON data',
     category: 'development'
   },
-  { 
-    id: 'timestamp-converter', 
-    title: 'Timestamp Converter', 
+  {
+    id: 'timestamp-converter',
+    title: 'Timestamp Converter',
     component: 'TimestampConverter',
     desc: 'Convert Unix timestamps to readable dates',
     category: 'development'
   },
-  { 
-    id: 'regex-tester', 
-    title: 'Regex Tester', 
+  {
+    id: 'regex-tester',
+    title: 'Regex Tester',
     component: 'RegexTester',
     desc: 'Test and debug regular expressions',
     category: 'development'
   },
-  { 
-    id: 'css-units-converter', 
-    title: 'CSS Units Converter', 
+  {
+    id: 'css-units-converter',
+    title: 'CSS Units Converter',
     component: 'CssUnitsConverter',
     desc: 'Convert between CSS units (px, rem, em, vw, etc.)',
     category: 'development'
   },
 
   // Generators
-  { 
-    id: 'uuid-generator', 
-    title: 'UUID Generator', 
+  {
+    id: 'uuid-generator',
+    title: 'UUID Generator',
     component: 'UuidGenerator',
     desc: 'Generate random unique identifiers',
     category: 'development'
@@ -262,6 +262,108 @@ export const TOOLS_CONFIG = [
     title: 'CSS Gradient Generator',
     component: 'GradientGenerator',
     desc: 'Create beautiful CSS gradients with live preview',
+    category: 'multimedia'
+  },
+
+  // Text Processing Tools
+  {
+    id: 'text-reverser',
+    title: 'Reverse Text',
+    component: 'TextReverser',
+    desc: 'Quickly reverse the order of letters in text',
+    category: 'development'
+  },
+  {
+    id: 'string-repeater',
+    title: 'Repeat String',
+    component: 'StringRepeater',
+    desc: 'Quickly repeat a string multiple times',
+    category: 'development'
+  },
+  {
+    id: 'random-picker',
+    title: 'Random Item Picker',
+    component: 'RandomPicker',
+    desc: 'Quickly pick random items from a list',
+    category: 'development'
+  },
+  {
+    id: 'list-sorter',
+    title: 'List Sorter',
+    component: 'ListSorter',
+    desc: 'Quickly sort and manipulate lists',
+    category: 'development'
+  },
+  {
+    id: 'number-calculator',
+    title: 'Number Calculator',
+    component: 'NumberCalculator',
+    desc: 'Sum, sort, and generate number sequences',
+    category: 'development'
+  },
+  {
+    id: 'unicode-spoof',
+    title: 'Unicode Text Spoof',
+    component: 'UnicodeSpoof',
+    desc: 'Replace regular characters with Unicode look-alikes',
+    category: 'development'
+  },
+  {
+    id: 'zalgo-generator',
+    title: 'Zalgo Text Generator',
+    component: 'ZalgoGenerator',
+    desc: 'Generate chaotic Zalgo text with combining characters',
+    category: 'development'
+  },
+  {
+    id: 'utf8-converter',
+    title: 'UTF8 to Hex/Binary',
+    component: 'Utf8Converter',
+    desc: 'Convert UTF8 text to hexadecimal and binary formats',
+    category: 'development'
+  },
+  {
+    id: 'ascii-converter',
+    title: 'ASCII to Decimal',
+    component: 'AsciiConverter',
+    desc: 'Convert ASCII characters to decimal values and back',
+    category: 'development'
+  },
+
+  // Multimedia Viewers & Editors
+  {
+    id: 'pdf-viewer',
+    title: 'PDF Viewer',
+    component: 'PdfViewer',
+    desc: 'View and navigate PDF documents',
+    category: 'multimedia'
+  },
+  {
+    id: 'doc-viewer',
+    title: 'Document Viewer',
+    component: 'DocViewer',
+    desc: 'View Word documents, text files, and more',
+    category: 'multimedia'
+  },
+  {
+    id: 'video-player',
+    title: 'Video Player',
+    component: 'VideoPlayer',
+    desc: 'Advanced video player with controls and formats',
+    category: 'multimedia'
+  },
+  {
+    id: 'audio-player',
+    title: 'Audio Player',
+    component: 'AudioPlayer',
+    desc: 'Feature-rich audio player with playlist support',
+    category: 'multimedia'
+  },
+  {
+    id: 'image-editor-basic',
+    title: 'Basic Image Editor',
+    component: 'ImageEditorBasic',
+    desc: 'Simple image editing with filters and adjustments',
     category: 'multimedia'
   }
 ]
