@@ -310,11 +310,11 @@ export default function HomePage({ onNavigate }) {
           </div>
 
           {/* Right sidebar ad - desktop only */}
-          {/* <div className="w-72 flex-shrink-0 hidden xl:block">
+          <div className="w-72 flex-shrink-0 hidden xl:block">
             <div className="sticky top-6">
               <InContentAd className="rounded-lg overflow-hidden" />
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
